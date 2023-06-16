@@ -1,13 +1,8 @@
+import 'package:gesbuk_user/presentation/configs/services/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class PackageInfoService {
-  PackageInfo? _packageInfo;
+  PackageInfo get _packageInfo => serviceLocatorInstance<PackageInfo>();
 
-  Future<PackageInfoService> init() async {
-    _packageInfo = await PackageInfo.fromPlatform();
-
-    return this;
-  }
-
-  String? get appVersion => _packageInfo?.version;
+  String get appVersion => _packageInfo.version;
 }
