@@ -3,17 +3,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gesbuk_user/presentation/commons/themes/themes.dart';
 import 'package:gesbuk_user/presentation/configs/routes/routes.dart';
 
-void main() {
-  runApp(const App());
+import 'presentation/configs/services/services.dart';
+
+void main() async {
+  await initializeServiceLocator();
+
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+
+  final AppRouter appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    AppRouter appRouter = AppRouter();
-
     return MaterialApp.router(
       title: 'Gesbuk',
       debugShowCheckedModeBanner: false,

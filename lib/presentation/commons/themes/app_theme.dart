@@ -8,6 +8,7 @@ mixin AppTheme implements ThemeData {
 
     return theme.copyWith(
       colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryBlue),
+      primaryColor: AppColor.primaryBlue,
       scaffoldBackgroundColor: AppColor.backgroundLight,
       appBarTheme: const AppBarTheme(
           elevation: 1.0,
@@ -16,6 +17,20 @@ mixin AppTheme implements ThemeData {
           foregroundColor: Colors.black),
       dialogBackgroundColor: AppColor.backgroundLight,
       textTheme: theme.textTheme.apply(fontFamily: 'Nunito'),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(12.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      )),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.all(12.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      )),
     );
   }
 }
