@@ -36,7 +36,7 @@ class SplashView extends StatelessWidget {
               children: [
                 Image.asset(
                   'assets/images/gesbuk-logo.png',
-                  width: size.width * 0.65,
+                  width: size.width * 0.6,
                 ),
                 Text(
                   'v${state.appVersion}',

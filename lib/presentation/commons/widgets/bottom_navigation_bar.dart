@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/screen/home_page.dart';
 import '../../features/price_list/screen/price_list_page.dart';
+import '../../features/profile/screen/profile_page.dart';
 import '../controllers/controllers.dart';
 
 @RoutePage(name: 'MainRoute')
@@ -19,7 +20,7 @@ class GesbukBottomNavigationBar extends StatelessWidget {
       HomePage(),
       Placeholder(),
       PriceListPage(),
-      Placeholder(),
+      ProfilePage(),
     ];
 
     return BlocProvider(
