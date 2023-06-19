@@ -2,17 +2,18 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gesbuk_user/presentation/commons/themes/themes.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import '../../../commons/themes/themes.dart';
 import '../cubit/carousel_cubit.dart';
+import '../model/model.dart';
 
 class LoginCarousel extends StatelessWidget {
   const LoginCarousel({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final items = _LoginCarouselItem.items;
+    final items = LoginCarouselItem.items;
 
     return BlocBuilder<CarouselCubit, int>(
       buildWhen: (previous, current) => previous != current,
@@ -51,7 +52,7 @@ class LoginCarousel extends StatelessWidget {
   }
 
   Widget _buildCarouselContent(BuildContext context,
-      {required _LoginCarouselItem item}) {
+      {required LoginCarouselItem item}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -84,33 +85,4 @@ class LoginCarousel extends StatelessWidget {
             backgroundColor: Colors.black12,
           );
   }
-}
-
-class _LoginCarouselItem {
-  _LoginCarouselItem({
-    required this.bodyText,
-    required this.svgPath,
-  });
-
-  final String bodyText;
-  final String svgPath;
-
-  static List<_LoginCarouselItem> get items => [
-        _LoginCarouselItem(
-            bodyText:
-                'Registrasi menjadi Cepat, Efisien, Aman, Modern dan Unik yang cocok untuk berbagai event anda.',
-            svgPath: 'assets/images/undraw_to_do_list_re_9nt7.svg'),
-        _LoginCarouselItem(
-            bodyText:
-                'Registrasi mudah dengan tanpa kontak fisik sesuai dengan Protokol Kesehatan saat masa NEW NORMAL saat ini.',
-            svgPath: 'assets/images/undraw_social_distancing_2g0u.svg'),
-        _LoginCarouselItem(
-            bodyText:
-                'Tamu dapat teridentifikasi karena adanya Photo Capture dan tamu dapat terfilter sesuai kategori untuk kebutuhan Protokoler.',
-            svgPath: 'assets/images/undraw_live_photo_re_4khn.svg'),
-        _LoginCarouselItem(
-            bodyText:
-                'Card invitation Digital (Paperless) sehingga hemat kertas undangan',
-            svgPath: 'assets/images/undraw_delivery_re_f50b.svg'),
-      ];
 }

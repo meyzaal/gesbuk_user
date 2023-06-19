@@ -68,9 +68,9 @@ class _UpcomingEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      EventCard(),
-      EventCard(),
-      EventCard(),
+      const EventCard(),
+      const EventCard(),
+      const EventCard(),
     ];
 
     return SizedBox(

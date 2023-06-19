@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/home/screen/home_page.dart';
+import '../../features/price_list/screen/price_list_page.dart';
 import '../controllers/controllers.dart';
 
 @RoutePage(name: 'MainRoute')
@@ -17,7 +18,7 @@ class GesbukBottomNavigationBar extends StatelessWidget {
     List<Widget> pages = const [
       HomePage(),
       Placeholder(),
-      Placeholder(),
+      PriceListPage(),
       Placeholder(),
     ];
 

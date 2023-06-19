@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gesbuk_user/presentation/features/home/widget/home_portfolio.dart';
 
-import '../widget/home_advantages.dart';
-import '../widget/home_event.dart';
-import '../widget/home_header.dart';
+import '../widget/widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
