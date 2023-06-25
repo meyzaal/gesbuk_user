@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../model/model.dart';
 
-
 class HomePortfolio extends StatelessWidget {
   const HomePortfolio({super.key});
 
@@ -14,15 +13,16 @@ class HomePortfolio extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child:
-                Text('Label', style: Theme.of(context).textTheme.titleMedium),
+            child: Text('Portofolio Gesbuk',
+                style: Theme.of(context).textTheme.titleMedium),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           SizedBox(
-            height: 376.0,
+            height: 352,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -36,7 +36,7 @@ class HomePortfolio extends StatelessWidget {
                     location: items[index].location,
                     date: items[index].date),
               ),
-              separatorBuilder: (context, index) => const SizedBox(width: 16.0),
+              separatorBuilder: (context, index) => const SizedBox(width: 8.0),
               itemCount: items.length,
             ),
           ),
@@ -64,36 +64,41 @@ class _PortfolioCard extends StatelessWidget {
     return Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
         clipBehavior: Clip.hardEdge,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
-            child: Image.asset(
-              imagePath,
-              height: 224.0,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleMedium,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 8.0),
-                    if (location != null)
-                      _buildContent(context,
-                          iconData: Icons.place_rounded, text: location!),
-                    _buildContent(context,
-                        iconData: Icons.event_rounded, text: date)
-                  ]))
-        ]));
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                clipBehavior: Clip.hardEdge,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
+                child: Image.asset(
+                  imagePath,
+                  width: 224.0,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          title,
+                          style: Theme.of(context).textTheme.titleMedium,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: 8.0),
+                        if (location != null)
+                          _buildContent(context,
+                              iconData: Icons.place_rounded, text: location!),
+                        _buildContent(context,
+                            iconData: Icons.event_rounded, text: date)
+                      ]))
+            ]));
   }
 
   Row _buildContent(BuildContext context,

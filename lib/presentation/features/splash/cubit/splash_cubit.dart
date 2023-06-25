@@ -23,6 +23,6 @@ class SplashCubit extends Cubit<SplashState> {
 
     await Future.delayed(duration);
 
-    return emit(state.copyWith(isUserLoggedIn: true));
+    return emit(state.copyWith(isUserLoggedIn: false));
   }
 }

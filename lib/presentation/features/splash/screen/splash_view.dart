@@ -32,15 +32,19 @@ class SplashView extends StatelessWidget {
         builder: (context, state) {
           return Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                const SizedBox(), // empty space at top
                 Image.asset(
                   'assets/images/gesbuk-logo.png',
                   width: size.width * 0.6,
                 ),
-                Text(
-                  'v${state.appVersion}',
-                  style: Theme.of(context).textTheme.bodySmall,
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Text(
+                    'v${state.appVersion}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               ],
             ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gesbuk_user/presentation/commons/themes/themes.dart';
-import 'package:gesbuk_user/presentation/configs/routes/routes.dart';
 
+import 'presentation/commons/themes/themes.dart';
+import 'presentation/configs/routes/routes.dart';
 import 'presentation/configs/services/services.dart';
 
 void main() async {

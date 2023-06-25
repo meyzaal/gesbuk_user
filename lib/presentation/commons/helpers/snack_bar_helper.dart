@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../themes/themes.dart';
 import '../widgets/widgets.dart';
 
 enum SnackBarType { error, warning, success }
@@ -16,10 +17,15 @@ class SnackBarHelper {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       GesbukSnackBar(
-        content: Text(content),
+        content: Text(
+          content,
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: AppColor.white),
+        ),
         backgroundColor: backgroundColor,
         type: type,
-        onClosed: () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
       ),
     );
   }

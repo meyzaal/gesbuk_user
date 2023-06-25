@@ -1,10 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 import '../../../commons/themes/themes.dart';
+import '../../../commons/widgets/widgets.dart';
 import '../cubit/carousel_cubit.dart';
 import '../model/model.dart';
 
@@ -57,11 +56,8 @@ class LoginCarousel extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-            child: SvgPicture.asset(
+            child: GesbukSvgPicture.asset(
           item.svgPath,
-          placeholderBuilder: (_) => Image.memory(
-            kTransparentImage,
-          ),
         )),
         Padding(
           padding: const EdgeInsets.all(16.0),

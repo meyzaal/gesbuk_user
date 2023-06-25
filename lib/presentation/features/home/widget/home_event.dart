@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../commons/controllers/controllers.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
 
@@ -9,18 +10,7 @@ class HomeEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text('Label', style: Theme.of(context).textTheme.titleMedium),
-          const SizedBox(height: 8.0),
-          const _EventDone()
-        ],
-      ),
-    );
+    return const Section(title: 'title', content: _CreateEvent());
   }
 }
 
@@ -30,7 +20,9 @@ class _CreateEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () => context
+          .read<BottomNavigationBarCubit>()
+          .changeIndex(1), // change to view my_event
       label: const Text('Buat event'),
       icon: const Icon(
         Icons.add_rounded,
@@ -50,7 +42,7 @@ class _EventDone extends StatelessWidget {
         children: [
           AspectRatio(
               aspectRatio: 21 / 9,
-              child: SvgPicture.asset(
+              child: GesbukSvgPicture.asset(
                   'assets/images/undraw_celebration_re_kc9k.svg')),
           const SizedBox(height: 16.0),
           Text(
@@ -68,13 +60,13 @@ class _UpcomingEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = [
-      const EventCard(),
-      const EventCard(),
-      const EventCard(),
+      const EventCard(withShadow: false),
+      const EventCard(withShadow: false),
+      const EventCard(withShadow: false),
     ];
 
     return SizedBox(
-      height: AppSizes.baseSize * 28,
+      height: AppSizes.baseSize * 27,
       child: ListView.builder(
         shrinkWrap: true,
         physics: const PageScrollPhysics(),

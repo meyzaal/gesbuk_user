@@ -21,7 +21,7 @@ class PriceListView extends StatelessWidget {
             category: items[index].category,
             limit: items[index].limit,
             price: items[index].price),
-        separatorBuilder: (context, index) => const SizedBox(height: 16.0),
+        separatorBuilder: (context, index) => const SizedBox(height: 8.0),
         itemCount: items.length,
       ),
       floatingActionButton: PriceListWhatsAppButton(

@@ -1,11 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
 
 import '../helpers/helpers.dart';
 import '../themes/themes.dart';
 import 'widgets.dart';
 
 class EventCard extends StatelessWidget {
-  const EventCard({super.key});
+  final bool withShadow;
+
+  const EventCard({
+    super.key,
+    this.withShadow = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,55 +21,69 @@ class EventCard extends StatelessWidget {
     const imageUrl =
         'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80';
 
-    return _Background(
-      imageUrl: imageUrl,
-      child: _InfoCard(
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Flexible(
-                fit: FlexFit.loose,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Event Name',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    Column(
+    return Stack(
+      children: [
+        _Background(
+          imageUrl: imageUrl,
+          withShadow: withShadow,
+          child: _InfoCard(
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    fit: FlexFit.loose,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _buildContent(
-                          context,
-                          iconData: Icons.people_rounded,
-                          text: 'data',
+                        Text(
+                          'Event Name',
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
-                        _buildContent(
-                          context,
-                          iconData: Icons.pin_drop_rounded,
-                          text: 'data',
+                        Column(
+                          children: [
+                            _buildContent(
+                              context,
+                              iconData: Icons.people_rounded,
+                              text: 'data',
+                            ),
+                            _buildContent(
+                              context,
+                              iconData: Icons.pin_drop_rounded,
+                              text: 'data',
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  const VerticalDivider(
+                    thickness: 2.0,
+                    color: AppColor.secondaryBlue,
+                    indent: 0,
+                    endIndent: 0,
+                  ),
+                  const SizedBox(width: 8.0),
+                  _buildEventDate(context, date: date),
+                ],
               ),
-              const SizedBox(width: 8.0),
-              const VerticalDivider(
-                thickness: 2.0,
-                color: AppColor.secondaryBlue,
-                indent: 0,
-                endIndent: 0,
-              ),
-              const SizedBox(width: 8.0),
-              _buildEventDate(context, date: date),
-            ],
+            ),
           ),
         ),
-      ),
+        Positioned.fill(
+            child: Material(
+          borderRadius: BorderRadius.circular(AppSizes.widgetBorderRadius / 2),
+          clipBehavior: Clip.hardEdge,
+          type: MaterialType.transparency,
+          child: InkWell(
+            onTap: () => context.router.push(const EventDetailRoute()),
+          ),
+        ))
+      ],
     );
   }
 
@@ -141,9 +162,12 @@ class _InfoCard extends StatelessWidget {
 }
 
 class _Background extends StatelessWidget {
+  final bool withShadow;
+
   const _Background({
     required this.child,
     required this.imageUrl,
+    required this.withShadow,
   });
 
   final Widget child;
@@ -159,13 +183,15 @@ class _Background extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppSizes.widgetSidePadding),
-              boxShadow: const [
-                BoxShadow(
-                  color: AppColor.lightGray,
-                  blurRadius: 3.0,
-                  offset: Offset(1, 3),
-                )
-              ],
+              boxShadow: withShadow
+                  ? const [
+                      BoxShadow(
+                        color: AppColor.lightGray,
+                        blurRadius: 3.0,
+                        offset: Offset(1, 3),
+                      )
+                    ]
+                  : null,
             ),
             child: GesbukNetworkImage(
               imageUrl: imageUrl,

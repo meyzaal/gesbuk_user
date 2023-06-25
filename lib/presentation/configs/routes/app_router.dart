@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
 import '../../commons/widgets/bottom_navigation_bar.dart';
+import '../../features/event_detail/screen/event_detail_page.dart';
 import '../../features/login/screen/login_page.dart';
 import '../../features/splash/screen/splash_page.dart';
 import 'app_router.gr.dart';
@@ -21,6 +22,10 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: MainRoute.page,
           path: GesbukBottomNavigationBar.routeName,
+        ),
+        AutoRoute(
+          page: EventDetailRoute.page,
+          path: EventDetailPage.routeName,
         ),
       ];
 }
