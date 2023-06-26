@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
 import 'package:gesbuk_user/presentation/features/profile/cubit/theme_switch_cubit.dart';
 
 import '../../../commons/themes/themes.dart';
@@ -80,7 +82,10 @@ class _TileButton extends ListTile {
           title: 'Sign Out',
           subtitle: 'Keluar dari aplikasi',
           trailing: const SizedBox(),
-          onTap: () {},
+          onTap: () => context.router.pushAndPopUntil(
+            const LoginRoute(),
+            predicate: (route) => false,
+          ),
         ),
       ];
 }

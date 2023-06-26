@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/event_detail_action_buttons.dart';
+import '../widget/event_detail_guest_list.dart';
 import '../widget/event_detail_info.dart';
 import '../widget/event_detail_report.dart';
 
@@ -12,6 +13,7 @@ class EventDetailView extends StatelessWidget {
     List<Widget> items = const [
       EventDetailInfo(),
       EventDetailReport(),
+      EventDetailGuestList(),
     ];
 
     return Scaffold(

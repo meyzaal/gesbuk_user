@@ -15,7 +15,12 @@ class PriceListView extends StatelessWidget {
         title: const Text('Price List'),
       ),
       body: ListView.separated(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(
+          16.0,
+          16.0,
+          16.0,
+          16.0 + 72.0,
+        ),
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => PriceListProductCard(
             category: items[index].category,
