@@ -28,7 +28,8 @@ class GuestListGuests extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildAddress(context,
-                    address: 'address', guestCheckIn: index % 3 == 0),
+                    address: 'address asfasfasf asffasf safsaffsa asafssa ',
+                    guestCheckIn: index % 3 == 0),
                 const Divider(indent: 16.0),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -52,31 +53,42 @@ class GuestListGuests extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Table(
-        columnWidths: {0: IntrinsicColumnWidth(), 1: FlexColumnWidth()},
+        columnWidths: const {
+          0: IntrinsicColumnWidth(),
+          1: IntrinsicColumnWidth(),
+        },
         children: [
           TableRow(children: [
+            Text(
+              'Alamat',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                'Alamat',
+                ':',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
             Text(
-              ': $address',
+              address,
               style: Theme.of(context).textTheme.bodyMedium,
             )
           ]),
           TableRow(children: [
+            Text(
+              'Status',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Text(
-                'Status',
+                ':',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
             Text(
-              ': $status',
+              status,
               style: Theme.of(context).textTheme.bodyMedium,
             )
           ]),
