@@ -1,7 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
 
-import '../../../commons/controllers/controllers.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
 
@@ -20,9 +20,10 @@ class _CreateEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () => context
-          .read<BottomNavigationBarCubit>()
-          .changeIndex(1), // change to view my_event
+      onPressed: () => context.router.pushAndPopUntil(
+        const MyEventRoute(),
+        predicate: (route) => false,
+      ),
       label: const Text('Buat event'),
       icon: const Icon(
         Icons.add_rounded,

@@ -1,74 +1,32 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home/screen/home_page.dart';
-import '../../features/my_event/screen/my_event_page.dart';
-import '../../features/price_list/screen/price_list_page.dart';
-import '../../features/profile/screen/profile_page.dart';
-import '../controllers/controllers.dart';
-
-@RoutePage(name: 'MainRoute')
 class GesbukBottomNavigationBar extends StatelessWidget {
-  const GesbukBottomNavigationBar({super.key});
-
-  static const routeName = '/main';
-
-  @override
-  Widget build(BuildContext context) {
-    List<_BottomMenuItem> buttonMenuItems = _BottomMenuItem.items;
-    List<Widget> pages = const [
-      HomePage(),
-      MyEventPage(),
-      PriceListPage(),
-      ProfilePage(),
-    ];
-
-    return BlocProvider(
-      create: (context) => BottomNavigationBarCubit(),
-      child: BlocBuilder<BottomNavigationBarCubit, int>(
-        builder: (context, state) {
-          return Scaffold(
-            body: pages[state],
-            bottomNavigationBar: _ButtonMenu(
-              items: List.generate(
-                buttonMenuItems.length,
-                (index) => BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: buttonMenuItems[index].icon,
-                  ),
-                  label: buttonMenuItems[index].label,
-                ),
-              ),
-              currentIndex: state,
-              onTap: (value) =>
-                  context.read<BottomNavigationBarCubit>().changeIndex(value),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class _ButtonMenu extends StatelessWidget {
-  final List<BottomNavigationBarItem> items;
-  final int currentIndex;
   final ValueChanged<int> onTap;
+  final int currentIndex;
 
-  const _ButtonMenu({
-    required this.items,
-    required this.currentIndex,
+  const GesbukBottomNavigationBar({
+    super.key,
     required this.onTap,
+    required this.currentIndex,
   });
 
   @override
   Widget build(BuildContext context) {
+    List<_MenuItem> buttonMenuItems = _MenuItem.items;
+
     return BottomNavigationBar(
-      items: items,
-      currentIndex: currentIndex,
+      items: List.generate(
+        buttonMenuItems.length,
+        (index) => BottomNavigationBarItem(
+          icon: Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: buttonMenuItems[index].icon,
+          ),
+          label: buttonMenuItems[index].label,
+        ),
+      ),
       onTap: onTap,
+      currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
       unselectedFontSize: 14.0,
       selectedFontSize: 14.0,
@@ -77,29 +35,29 @@ class _ButtonMenu extends StatelessWidget {
   }
 }
 
-class _BottomMenuItem {
+class _MenuItem {
   final Icon icon;
   final String label;
 
-  _BottomMenuItem({
+  _MenuItem({
     required this.icon,
     required this.label,
   });
 
-  static List<_BottomMenuItem> get items => [
-        _BottomMenuItem(
+  static List<_MenuItem> get items => [
+        _MenuItem(
           icon: const Icon(Icons.home_rounded),
           label: 'Home',
         ),
-        _BottomMenuItem(
+        _MenuItem(
           icon: const Icon(Icons.event_note_rounded),
           label: 'My Event',
         ),
-        _BottomMenuItem(
+        _MenuItem(
           icon: const Icon(Icons.menu_book_outlined),
           label: 'Price List',
         ),
-        _BottomMenuItem(
+        _MenuItem(
           icon: const Icon(Icons.person_rounded),
           label: 'Profile',
         ),

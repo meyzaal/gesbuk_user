@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
 
 import '../../../commons/helpers/helpers.dart';
 import '../../../commons/widgets/widgets.dart';
@@ -16,7 +18,9 @@ class EventDetailGuestList extends StatelessWidget {
       children: [
         _buildTitleSection(
           context,
-          onViewAll: () {},
+          onViewAll: () => context.router
+              .push<bool>(const GuestListRoute())
+              .then((value) => print('value: $value')),
         ),
         ListView.separated(
           shrinkWrap: true,

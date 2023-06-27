@@ -4,7 +4,7 @@ import '../themes/themes.dart';
 
 class GuestCard extends StatelessWidget {
   final String name;
-  final String address;
+  final String? address;
   final String type;
   final bool withBadge;
   final Widget? trailing;
@@ -12,7 +12,7 @@ class GuestCard extends StatelessWidget {
   const GuestCard({
     super.key,
     required this.name,
-    required this.address,
+    this.address,
     required this.type,
     required this.withBadge,
     this.trailing,
@@ -35,12 +35,13 @@ class GuestCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            address,
-            style: Theme.of(context).textTheme.bodySmall,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
+          if (address != null)
+            Text(
+              address!,
+              style: Theme.of(context).textTheme.bodySmall,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           Text(
             type.toUpperCase(),
             style: Theme.of(context).textTheme.bodySmall,

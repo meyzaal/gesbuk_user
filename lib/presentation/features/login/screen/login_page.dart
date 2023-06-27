@@ -9,8 +9,6 @@ import 'login_view.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  static const routeName = '/login';
-
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(

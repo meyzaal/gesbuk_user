@@ -1,9 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 
-import '../../commons/widgets/bottom_navigation_bar.dart';
-import '../../features/event_detail/screen/event_detail_page.dart';
-import '../../features/login/screen/login_page.dart';
-import '../../features/splash/screen/splash_page.dart';
 import 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen,Route')
@@ -12,20 +8,31 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(
           page: SplasRoute.page,
-          path: SplashPage.routeName,
+          path: '/',
           initial: true,
         ),
         AutoRoute(
           page: LoginRoute.page,
-          path: LoginPage.routeName,
+          path: '/login',
         ),
         AutoRoute(
           page: MainRoute.page,
-          path: GesbukBottomNavigationBar.routeName,
+          path: '/main',
+          children: [
+            RedirectRoute(path: '', redirectTo: 'home'),
+            AutoRoute(page: HomeRoute.page, path: 'home'),
+            AutoRoute(page: MyEventRoute.page, path: 'my-event'),
+            AutoRoute(page: PriceListRoute.page, path: 'price-list'),
+            AutoRoute(page: ProfileRoute.page, path: 'profile'),
+          ],
         ),
         AutoRoute(
           page: EventDetailRoute.page,
-          path: EventDetailPage.routeName,
+          path: '/event/detail',
+        ),
+        AutoRoute(
+          page: GuestListRoute.page,
+          path: '/event/detail/guests',
         ),
       ];
 }
