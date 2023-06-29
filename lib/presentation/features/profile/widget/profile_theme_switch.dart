@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/helpers/helpers.dart';
 import '../../../commons/themes/themes.dart';
-import '../cubit/theme_switch_cubit.dart';
+import '../controller/cubit/theme_switch_cubit.dart';
 
 class ProfileThemeSwitch extends StatelessWidget {
   const ProfileThemeSwitch({super.key});

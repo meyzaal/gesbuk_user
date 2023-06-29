@@ -27,7 +27,7 @@ class GuestListGuests extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
-                _buildAddress(context,
+                _buildGuestInfo(context,
                     address: 'address asfasfasf asffasf safsaffsa asafssa ',
                     guestCheckIn: index % 3 == 0),
                 const Divider(indent: 16.0),
@@ -46,7 +46,7 @@ class GuestListGuests extends StatelessWidget {
     );
   }
 
-  Widget _buildAddress(BuildContext context,
+  Widget _buildGuestInfo(BuildContext context,
       {required String address, required bool guestCheckIn}) {
     String status = guestCheckIn ? 'Hadir' : 'Tidak hadir';
 

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
-import '../cubit/carousel_cubit.dart';
+import '../controller/cubit/carousel_cubit.dart';
 import '../model/model.dart';
 
 class LoginCarousel extends StatelessWidget {

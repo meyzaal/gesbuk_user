@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'guest_list_view.dart';
 
-@RoutePage<bool>(name: 'GuestListRoute')
+@RoutePage(name: 'GuestListRoute')
 class GuestListPage extends StatelessWidget {
-  const GuestListPage({super.key});
+  final ValueChanged<bool> onGuestCheckin;
+
+  const GuestListPage({super.key, required this.onGuestCheckin});
 
   @override
   Widget build(BuildContext context) {
-    return const GuestListView();
+    return WillPopScope(
+      onWillPop: () {
+        onGuestCheckin(false);
+        return Future.value(true);
+      },
+      child: const GuestListView(),
+    );
   }
 }

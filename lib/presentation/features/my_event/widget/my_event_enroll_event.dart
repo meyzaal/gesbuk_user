@@ -20,9 +20,10 @@ class MyEventEnrollEvent extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: 8.0),
           OutlinedButton.icon(
-              onPressed: () => ShowModalBottomSheetHelper.of(context)
-                  .showBottomSheet(
-                      builder: (context) => _buildBottomSheet(context)),
+              onPressed: () {
+                ShowModalBottomSheetHelper.of(context).showBottomSheet(
+                    builder: (context) => _buildBottomSheet(context));
+              },
               icon: const Icon(Icons.discount_rounded),
               label: const Text('Masukkan kode event')),
         ],
@@ -57,9 +58,7 @@ class MyEventEnrollEvent extends StatelessWidget {
           const SizedBox(height: 32.0),
           ElevatedButton(
               onPressed: () {
-                context.router
-                    .pop<bool>()
-                    .then((value) => print('closed $value'));
+                context.router.pop();
               },
               child: const Text('Validasi'))
         ],

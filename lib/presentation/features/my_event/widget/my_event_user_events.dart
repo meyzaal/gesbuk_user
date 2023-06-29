@@ -10,11 +10,12 @@ class MyEventUserEvents extends StatelessWidget {
     return Section(
       title: 'Event kamu',
       content: ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => const EventCard(),
-          separatorBuilder: (context, index) => const SizedBox(height: 16.0),
-          itemCount: 5),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) => const EventCard(),
+        separatorBuilder: (context, index) => const SizedBox(height: 16.0),
+        itemCount: 5,
+      ),
     );
   }
 }

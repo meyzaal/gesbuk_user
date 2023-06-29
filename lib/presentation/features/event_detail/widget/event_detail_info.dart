@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gesbuk_user/presentation/commons/widgets/widgets.dart';
+
+import '../../../commons/widgets/widgets.dart';
+import '../../../configs/routes/routes.dart';
 
 class EventDetailInfo extends StatelessWidget {
   const EventDetailInfo({super.key});
@@ -17,8 +20,9 @@ class EventDetailInfo extends StatelessWidget {
           aspectRatio: 16 / 9,
           child: GesbukNetworkImage(imageUrl: imageUrl),
         ),
+        const SizedBox(height: 16.0),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,6 +36,36 @@ class EventDetailInfo extends StatelessWidget {
                   iconData: Icons.pin_drop_rounded, text: 'Event Location '),
               _buildIconWithText(context,
                   iconData: Icons.people_rounded, text: 'Guest Count'),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                    onPressed: () => context.router.push(GuestListRoute(
+                          onGuestCheckin: (update) => print('value = $update'),
+                        )),
+                    icon: const Icon(
+                      Icons.people_alt_rounded,
+                      size: 18.0,
+                    ),
+                    label: const Text('Daftar tamu')),
+              ),
+              const SizedBox(width: 8.0),
+              Expanded(
+                child: ElevatedButton.icon(
+                    onPressed: () => context.router.push(ScannerRoute(
+                          onGuestCheckin: (update) => print('value = $update'),
+                        )),
+                    icon: const Icon(
+                      Icons.qr_code_scanner_rounded,
+                      size: 18.0,
+                    ),
+                    label: const Text('Pindai QR')),
+              ),
             ],
           ),
         )

@@ -34,5 +34,9 @@ class AppRouter extends $AppRouter {
           page: GuestListRoute.page,
           path: '/event/detail/guests',
         ),
+        AutoRoute(
+          page: ScannerRoute.page,
+          path: '/event/detail/scanner',
+        ),
       ];
 }

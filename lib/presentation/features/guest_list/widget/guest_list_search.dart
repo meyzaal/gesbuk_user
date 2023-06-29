@@ -7,6 +7,12 @@ class GuestListSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+          suffixIcon: IconButton(
+              constraints: const BoxConstraints(),
+              onPressed: () => FocusScope.of(context).unfocus(),
+              icon: const Icon(Icons.cancel_rounded)),
+          suffixIconConstraints:
+              const BoxConstraints(minHeight: 24.0, minWidth: 24.0),
           prefixIcon: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: Icon(Icons.search_rounded),

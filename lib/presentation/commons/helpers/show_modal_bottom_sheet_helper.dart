@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ShowModalBottomSheetHelper<T> {
+class ShowModalBottomSheetHelper {
   late BuildContext context;
 
   ShowModalBottomSheetHelper(this.context);
@@ -8,7 +8,7 @@ class ShowModalBottomSheetHelper<T> {
   static ShowModalBottomSheetHelper of(BuildContext context) =>
       ShowModalBottomSheetHelper(context);
 
-  Future<T?> showBottomSheet({required WidgetBuilder builder}) async {
+  Future<T?> showBottomSheet<T>({required WidgetBuilder builder}) async {
     return await showModalBottomSheet<T>(
       context: context,
       isScrollControlled: true,
