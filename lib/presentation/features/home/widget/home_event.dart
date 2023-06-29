@@ -95,27 +95,35 @@ class _EventDone extends StatelessWidget {
 }
 
 class _UpcomingEvents extends StatelessWidget {
-  const _UpcomingEvents({required List<Event> events});
+  final List<Event> events;
+
+  const _UpcomingEvents({required this.events});
 
   @override
   Widget build(BuildContext context) {
-    final items = [
-      const EventCard(withShadow: false),
-      const EventCard(withShadow: false),
-      const EventCard(withShadow: false),
-    ];
-
     return SizedBox(
       height: AppSizes.baseSize * 27,
       child: ListView.builder(
         shrinkWrap: true,
         physics: const PageScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => Center(
-            child: SizedBox(
-                width: MediaQuery.of(context).size.width - 32,
-                child: items[index])),
-        itemCount: items.length,
+        itemBuilder: (context, index) {
+          final event = events[index];
+
+          return Center(
+              child: SizedBox(
+                  width: MediaQuery.of(context).size.width - 32,
+                  child: EventCard(
+                    name: event.name,
+                    location: event.location,
+                    startDate: event.startDate,
+                    imageUrl: event.imageUrl,
+                    guestCount: event.guestCount,
+                    withShadow: false,
+                    onTap: () {},
+                  )));
+        },
+        itemCount: events.length,
       ),
     );
   }

@@ -1,25 +1,32 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
 
 import '../helpers/helpers.dart';
 import '../themes/themes.dart';
 import 'widgets.dart';
 
 class EventCard extends StatelessWidget {
+  final String name;
+  final String location;
+  final String startDate;
+  final String imageUrl;
+  final int guestCount;
   final bool withShadow;
+  final VoidCallback? onTap;
 
   const EventCard({
     super.key,
+    required this.name,
+    required this.location,
+    required this.startDate,
+    required this.imageUrl,
+    required this.guestCount,
     this.withShadow = true,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final date = DateTime.now();
-
-    const imageUrl =
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80';
+    final date = startDate != '' ? DateTime.parse(startDate) : DateTime.now();
 
     return Stack(
       children: [
@@ -40,7 +47,7 @@ class EventCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Event Name',
+                          name,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         Column(
@@ -48,12 +55,12 @@ class EventCard extends StatelessWidget {
                             _buildContent(
                               context,
                               iconData: Icons.people_rounded,
-                              text: 'data',
+                              text: '$guestCount tamu',
                             ),
                             _buildContent(
                               context,
                               iconData: Icons.pin_drop_rounded,
-                              text: 'data',
+                              text: location,
                             ),
                           ],
                         ),
@@ -80,7 +87,7 @@ class EventCard extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           type: MaterialType.transparency,
           child: InkWell(
-            onTap: () => context.router.push(const EventDetailRoute()),
+            onTap: onTap,
           ),
         ))
       ],

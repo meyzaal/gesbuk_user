@@ -17,6 +17,7 @@ class Event with _$Event {
     @Default('') String key,
     @Default(false) bool isEnrolled,
     @Default('-') String eventType,
+    @Default(0) int guestCount,
   }) = _Event;
 
   factory Event.fromJson(Map<String, Object?> json) => _$EventFromJson(json);

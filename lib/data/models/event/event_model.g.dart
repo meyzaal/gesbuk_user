@@ -16,6 +16,7 @@ _$_Event _$$_EventFromJson(Map<String, dynamic> json) => _$_Event(
       key: json['key'] as String? ?? '',
       isEnrolled: json['isEnrolled'] as bool? ?? false,
       eventType: json['eventType'] as String? ?? '-',
+      guestCount: json['guestCount'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_EventToJson(_$_Event instance) => <String, dynamic>{
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$_EventToJson(_$_Event instance) => <String, dynamic>{
       'key': instance.key,
       'isEnrolled': instance.isEnrolled,
       'eventType': instance.eventType,
+      'guestCount': instance.guestCount,
     };

@@ -30,6 +30,7 @@ mixin _$Event {
   String get key => throw _privateConstructorUsedError;
   bool get isEnrolled => throw _privateConstructorUsedError;
   String get eventType => throw _privateConstructorUsedError;
+  int get guestCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +51,8 @@ abstract class $EventCopyWith<$Res> {
       String endDate,
       String key,
       bool isEnrolled,
-      String eventType});
+      String eventType,
+      int guestCount});
 }
 
 /// @nodoc
@@ -75,6 +77,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? key = null,
     Object? isEnrolled = null,
     Object? eventType = null,
+    Object? guestCount = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -113,6 +116,10 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.eventType
           : eventType // ignore: cast_nullable_to_non_nullable
               as String,
+      guestCount: null == guestCount
+          ? _value.guestCount
+          : guestCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -132,7 +139,8 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       String endDate,
       String key,
       bool isEnrolled,
-      String eventType});
+      String eventType,
+      int guestCount});
 }
 
 /// @nodoc
@@ -153,6 +161,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? key = null,
     Object? isEnrolled = null,
     Object? eventType = null,
+    Object? guestCount = null,
   }) {
     return _then(_$_Event(
       id: null == id
@@ -191,6 +200,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.eventType
           : eventType // ignore: cast_nullable_to_non_nullable
               as String,
+      guestCount: null == guestCount
+          ? _value.guestCount
+          : guestCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -207,7 +220,8 @@ class _$_Event implements _Event {
       this.endDate = '',
       this.key = '',
       this.isEnrolled = false,
-      this.eventType = '-'});
+      this.eventType = '-',
+      this.guestCount = 0});
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
       _$$_EventFromJson(json);
@@ -239,10 +253,13 @@ class _$_Event implements _Event {
   @override
   @JsonKey()
   final String eventType;
+  @override
+  @JsonKey()
+  final int guestCount;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, imageUrl: $imageUrl, location: $location, startDate: $startDate, endDate: $endDate, key: $key, isEnrolled: $isEnrolled, eventType: $eventType)';
+    return 'Event(id: $id, name: $name, imageUrl: $imageUrl, location: $location, startDate: $startDate, endDate: $endDate, key: $key, isEnrolled: $isEnrolled, eventType: $eventType, guestCount: $guestCount)';
   }
 
   @override
@@ -263,13 +280,15 @@ class _$_Event implements _Event {
             (identical(other.isEnrolled, isEnrolled) ||
                 other.isEnrolled == isEnrolled) &&
             (identical(other.eventType, eventType) ||
-                other.eventType == eventType));
+                other.eventType == eventType) &&
+            (identical(other.guestCount, guestCount) ||
+                other.guestCount == guestCount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, imageUrl, location,
-      startDate, endDate, key, isEnrolled, eventType);
+      startDate, endDate, key, isEnrolled, eventType, guestCount);
 
   @JsonKey(ignore: true)
   @override
@@ -295,7 +314,8 @@ abstract class _Event implements Event {
       final String endDate,
       final String key,
       final bool isEnrolled,
-      final String eventType}) = _$_Event;
+      final String eventType,
+      final int guestCount}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
@@ -318,6 +338,8 @@ abstract class _Event implements Event {
   bool get isEnrolled;
   @override
   String get eventType;
+  @override
+  int get guestCount;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

@@ -8,4 +8,7 @@ import '../repositories/event_repository.dart';
 class EventUseCase {
   Future<Either<Failure, List<Event>>> getUpcomingEvents() async =>
       await serviceLocatorInstance<EventRepository>().getUpcomingEvents();
+
+  Future<Either<Failure, List<Event>>> getUserEvents() async =>
+      await serviceLocatorInstance<EventRepository>().getUserEvents();
 }
