@@ -18,7 +18,8 @@ class ProfilePage extends StatelessWidget {
         BlocProvider(create: (context) => ThemeSwitchCubit()),
         BlocProvider(create: (context) => SignOutCubit()),
         BlocProvider(
-          create: (context) => ProfileBloc(),
+          create: (context) =>
+              ProfileBloc()..add(const ProfileEvent.getUserEvent()),
         ),
       ],
       child: const ProfileView(),

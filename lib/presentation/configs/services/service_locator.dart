@@ -16,4 +16,5 @@ Future<void> initializeServiceLocator() async {
 
   await initializePackageInfoInstance();
   await initializeAuthenticationInstance();
+  await initializeProfileInstance();
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
+import '../../profile/controller/bloc/profile_bloc.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -27,39 +29,77 @@ class HomeHeader extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Hello!',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: AppColor.white),
-                      ),
-                      Text(
-                        'Meyza Ulil Albab',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: AppColor.white),
-                      ),
+                      _buildHello(),
+                      _buildName(),
                     ],
                   ),
                 ),
                 const SizedBox(width: 8.0),
-                SizedBox.fromSize(
-                  size: const Size.fromRadius(24.0),
-                  child: const ClipOval(
-                    child: GesbukNetworkImage(
-                        imageUrl:
-                            'http://source.unsplash.com/128x128?face-male'),
-                  ),
-                ),
+                _buildAvatar(),
               ],
             ),
           ),
         )
       ],
+    );
+  }
+
+  Widget _buildAvatar() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        return SizedBox.fromSize(
+          size: const Size.fromRadius(24.0),
+          child: state is ProfilLoadingState
+              ? const ShimmerLoading(shape: BoxShape.circle)
+              : ClipOval(
+                  child: GesbukNetworkImage(imageUrl: state.user.picture),
+                ),
+        );
+      },
+    );
+  }
+
+  Widget _buildName() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state is ProfilLoadingState) {
+          return ShimmerLoading(
+            height: (Theme.of(context).textTheme.titleLarge?.height ?? 8) + 4,
+            width: 128,
+          );
+        }
+
+        return Text(
+          'Meyza Ulil Albab',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: AppColor.white),
+        );
+      },
+    );
+  }
+
+  Widget _buildHello() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state is ProfilLoadingState) {
+          return ShimmerLoading(
+            height: (Theme.of(context).textTheme.bodyMedium?.height ?? 8) + 4,
+            width: 80,
+          );
+        }
+
+        return Text(
+          'Hello!',
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium
+              ?.copyWith(color: AppColor.white),
+        );
+      },
     );
   }
 }

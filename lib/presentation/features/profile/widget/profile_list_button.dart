@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/widgets/widgets.dart';
+import '../controller/bloc/profile_bloc.dart';
 import '../controller/cubit/theme_switch_cubit.dart';
 import 'widget.dart';
 
@@ -12,12 +13,18 @@ class ProfileListButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = getItems(context);
 
-    return ListView.separated(
-      padding: const EdgeInsets.all(16.0),
-      physics: const BouncingScrollPhysics(),
-      itemBuilder: (context, index) => items[index],
-      separatorBuilder: (context, index) => const SizedBox(height: 8.0),
-      itemCount: items.length,
+    return RefreshIndicator(
+      onRefresh: () async =>
+          context.read<ProfileBloc>().add(const ProfileEvent.getUserEvent()),
+      child: ListView.separated(
+        padding: const EdgeInsets.all(16.0),
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
+        ),
+        itemBuilder: (context, index) => items[index],
+        separatorBuilder: (context, index) => const SizedBox(height: 8.0),
+        itemCount: items.length,
+      ),
     );
   }
 
@@ -47,6 +54,6 @@ class ProfileListButton extends StatelessWidget {
           subtitle: 'Beri nilai aplikasi Gesbuk',
           onTap: () {},
         ),
-        const ProfileSignOutButton()
+        const ProfileSignOutButton(),
       ];
 }

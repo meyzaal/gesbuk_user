@@ -49,6 +49,7 @@ abstract class GoogleAuthenticationService {
   Future<bool> signInWithGoogle();
   Future<String?> getIdToken();
   Future<bool> signOutGoogle();
+  User? getUser();
 }
 
 class GoogleAuthentiactionServiceImpl extends GoogleAuthenticationService {
@@ -58,8 +59,6 @@ class GoogleAuthentiactionServiceImpl extends GoogleAuthenticationService {
   GoogleSignInAccount? _googleSignInAccount;
   GoogleSignInAuthentication? _googleSignInAuthentication;
   User? _user;
-
-  User? get user => _user ?? _firebaseAuth.currentUser;
 
   @override
   Future<bool> signInWithGoogle() async {
@@ -79,6 +78,8 @@ class GoogleAuthentiactionServiceImpl extends GoogleAuthenticationService {
 
   @override
   Future<String?> getIdToken() async {
+    _user = _firebaseAuth.currentUser;
+
     return await _user?.getIdToken();
   }
 
@@ -91,5 +92,10 @@ class GoogleAuthentiactionServiceImpl extends GoogleAuthenticationService {
         _firebaseAuth.currentUser == null && _googleSignIn.currentUser == null;
 
     return logout;
+  }
+
+  @override
+  User? getUser() {
+    return _user ?? _firebaseAuth.currentUser;
   }
 }

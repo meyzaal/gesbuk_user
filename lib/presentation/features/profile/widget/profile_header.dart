@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
+import '../controller/bloc/profile_bloc.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -20,36 +22,15 @@ class ProfileHeader extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    SizedBox.fromSize(
-                      size: const Size.fromRadius(32.0),
-                      child: const ClipOval(
-                        child: GesbukNetworkImage(
-                            imageUrl:
-                                'http://source.unsplash.com/128x128?face-male'),
-                      ),
-                    ),
+                    _buildAvatar(),
                     const SizedBox(width: 16.0),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Meyza Ulil Albab',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.copyWith(color: AppColor.white),
-                          ),
-                          Text(
-                            'almayza17@gmail.com',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(color: AppColor.white),
-                          ),
+                          _buildName(),
+                          _buildEmail(),
                         ],
                       ),
                     ),
@@ -70,6 +51,66 @@ class ProfileHeader extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildEmail() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state is ProfilLoadingState) {
+          return ShimmerLoading(
+            height: (Theme.of(context).textTheme.titleMedium?.height ?? 8) + 4,
+            width: 128,
+          );
+        }
+
+        return Text(
+          state.user.email,
+          style: Theme.of(context)
+              .textTheme
+              .titleMedium
+              ?.copyWith(color: AppColor.white),
+        );
+      },
+    );
+  }
+
+  Widget _buildName() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        if (state is ProfilLoadingState) {
+          return ShimmerLoading(
+            height:
+                (Theme.of(context).textTheme.headlineSmall?.height ?? 8) + 4,
+            width: 256.0,
+          );
+        }
+
+        return Text(
+          state.user.name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall
+              ?.copyWith(color: AppColor.white),
+        );
+      },
+    );
+  }
+
+  Widget _buildAvatar() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        return SizedBox.fromSize(
+          size: const Size.fromRadius(32.0),
+          child: state is ProfilLoadingState
+              ? const ShimmerLoading(shape: BoxShape.circle)
+              : ClipOval(
+                  child: GesbukNetworkImage(imageUrl: state.user.picture),
+                ),
+        );
+      },
     );
   }
 }

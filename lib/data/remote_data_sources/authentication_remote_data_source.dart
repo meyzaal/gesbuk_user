@@ -52,10 +52,11 @@ class AuthenticationRemoteDataSourceImpl
       debugPrint(dioException.toString());
       await authService.signOutGoogle();
       if (dioException.type == DioExceptionType.connectionTimeout) {
-        return const Left(ConnectionFailure('connection-timeout'));
+        return const Left(ConnectionFailure(
+            'Maaf, terjadi masalah koneksi. Silakan periksa kembali koneksi internet Anda'));
       }
       return const Left(
-          ConnectionFailure('Terjadi masalah saat menghubunkan ke server'));
+          ConnectionFailure('Terjadi masalah saat menghubungkan ke server'));
     } catch (e) {
       await authService.signOutGoogle();
       debugPrint(e.toString());

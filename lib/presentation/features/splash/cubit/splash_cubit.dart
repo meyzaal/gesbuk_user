@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gesbuk_user/presentation/configs/services/services.dart';
+
+import '../../../configs/services/services.dart';
 
 part 'splash_state.dart';
 part 'splash_cubit.freezed.dart';
@@ -22,7 +23,9 @@ class SplashCubit extends Cubit<SplashState> {
     const duration = Duration(seconds: 3);
 
     await Future.delayed(duration);
+    final user =
+        serviceLocatorInstance<GoogleAuthenticationService>().getUser();
 
-    return emit(state.copyWith(isUserLoggedIn: false));
+    return emit(state.copyWith(isUserLoggedIn: user != null));
   }
 }
