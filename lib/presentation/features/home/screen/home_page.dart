@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../profile/controller/bloc/profile_bloc.dart';
+import '../cubit/upcoming_event_cubit.dart';
 import 'home_view.dart';
 
 @RoutePage(name: 'HomeRoute')
@@ -11,9 +12,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          ProfileBloc()..add(const ProfileEvent.getUserEvent()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              ProfileBloc()..add(const ProfileEvent.getUserEvent()),
+        ),
+        BlocProvider(
+          create: (context) => UpcomingEventCubit()..getUpcomingEvent(),
+        ),
+      ],
       child: const HomeView(),
     );
   }

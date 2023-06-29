@@ -8,7 +8,7 @@ part of 'gesbuk_user_model.dart';
 
 _$_GesbukUser _$$_GesbukUserFromJson(Map<String, dynamic> json) =>
     _$_GesbukUser(
-      id: json['id'] as String? ?? '',
+      id: json['_id'] as String? ?? '',
       name: json['name'] as String? ?? '-',
       email: json['email'] as String? ?? '-',
       role: json['role'] as String? ?? '-',
@@ -17,7 +17,7 @@ _$_GesbukUser _$$_GesbukUserFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_GesbukUserToJson(_$_GesbukUser instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'name': instance.name,
       'email': instance.email,
       'role': instance.role,

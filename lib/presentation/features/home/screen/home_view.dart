@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../profile/controller/bloc/profile_bloc.dart';
+import '../cubit/upcoming_event_cubit.dart';
 import '../widget/widget.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,9 +10,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final upcomingEventState = context.watch<UpcomingEventCubit>().state;
+
     List<Widget> items = [
       const HomeAdvantages(),
-      const HomeEvent(),
+      if (upcomingEventState is UpcomingEventLoadedState) const HomeEvent(),
       const HomePortfolio(),
     ];
 
@@ -21,9 +24,13 @@ class HomeView extends StatelessWidget {
         const HomeHeader(),
         Expanded(
           child: RefreshIndicator(
-            onRefresh: () async => context
-                .read<ProfileBloc>()
-                .add(const ProfileEvent.getUserEvent()),
+            onRefresh: () async {
+              context
+                  .read<ProfileBloc>()
+                  .add(const ProfileEvent.getUserEvent());
+
+              context.read<UpcomingEventCubit>().getUpcomingEvent();
+            },
             child: ListView.separated(
               padding: EdgeInsets.zero,
               physics: const AlwaysScrollableScrollPhysics(

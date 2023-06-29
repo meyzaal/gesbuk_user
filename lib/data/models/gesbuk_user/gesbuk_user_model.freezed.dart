@@ -20,6 +20,7 @@ GesbukUser _$GesbukUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GesbukUser {
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -39,7 +40,11 @@ abstract class $GesbukUserCopyWith<$Res> {
       _$GesbukUserCopyWithImpl<$Res, GesbukUser>;
   @useResult
   $Res call(
-      {String id, String name, String email, String role, String picture});
+      {@JsonKey(name: '_id') String id,
+      String name,
+      String email,
+      String role,
+      String picture});
 }
 
 /// @nodoc
@@ -95,7 +100,11 @@ abstract class _$$_GesbukUserCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, String name, String email, String role, String picture});
+      {@JsonKey(name: '_id') String id,
+      String name,
+      String email,
+      String role,
+      String picture});
 }
 
 /// @nodoc
@@ -144,7 +153,7 @@ class __$$_GesbukUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GesbukUser implements _GesbukUser {
   const _$_GesbukUser(
-      {this.id = '',
+      {@JsonKey(name: '_id') this.id = '',
       this.name = '-',
       this.email = '-',
       this.role = '-',
@@ -154,7 +163,7 @@ class _$_GesbukUser implements _GesbukUser {
       _$$_GesbukUserFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: '_id')
   final String id;
   @override
   @JsonKey()
@@ -206,7 +215,7 @@ class _$_GesbukUser implements _GesbukUser {
 
 abstract class _GesbukUser implements GesbukUser {
   const factory _GesbukUser(
-      {final String id,
+      {@JsonKey(name: '_id') final String id,
       final String name,
       final String email,
       final String role,
@@ -216,6 +225,7 @@ abstract class _GesbukUser implements GesbukUser {
       _$_GesbukUser.fromJson;
 
   @override
+  @JsonKey(name: '_id')
   String get id;
   @override
   String get name;

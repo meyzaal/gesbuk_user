@@ -10,7 +10,10 @@ class ApiEndpoint {
   // User
   static String get user => '/user';
 
-  
+  // Event
   static String get event => '/event';
+  static String get upcomingEvent => '$event/upcoming-event';
+
+  // Guest
   static String get guest => '/guest';
 }

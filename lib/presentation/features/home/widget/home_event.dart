@@ -1,16 +1,55 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/models/event/event_model.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
+import '../../../configs/routes/routes.dart';
+import '../cubit/upcoming_event_cubit.dart';
 
 class HomeEvent extends StatelessWidget {
   const HomeEvent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Section(title: 'title', content: _CreateEvent());
+    return BlocBuilder<UpcomingEventCubit, UpcomingEventState>(
+      builder: (context, state) {
+        return Section(
+            title: _titleByStatus(state.status),
+            content: _buildContentByStatus(
+              status: state.status,
+              events: state.events,
+            ));
+      },
+    );
+  }
+
+  Widget _buildContentByStatus(
+      {required UpcomingEventStatus status, required List<Event> events}) {
+    switch (status) {
+      case UpcomingEventStatus.hasNotEvents:
+        return const _CreateEvent();
+      case UpcomingEventStatus.haveUpcomingEvents:
+        return _UpcomingEvents(events: events);
+      case UpcomingEventStatus.upcomingEventsEmpty:
+        return const _EventDone();
+      case UpcomingEventStatus.initial:
+        return const SizedBox();
+    }
+  }
+
+  String _titleByStatus(UpcomingEventStatus status) {
+    switch (status) {
+      case UpcomingEventStatus.hasNotEvents:
+        return 'Buat event pertama mu!';
+      case UpcomingEventStatus.haveUpcomingEvents:
+        return 'Event mendatang';
+      case UpcomingEventStatus.upcomingEventsEmpty:
+        return 'Yuk buat event lagi!';
+      case UpcomingEventStatus.initial:
+        return '';
+    }
   }
 }
 
@@ -56,7 +95,7 @@ class _EventDone extends StatelessWidget {
 }
 
 class _UpcomingEvents extends StatelessWidget {
-  const _UpcomingEvents();
+  const _UpcomingEvents({required List<Event> events});
 
   @override
   Widget build(BuildContext context) {
