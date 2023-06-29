@@ -59,12 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyB4UaRrePlWB1VIqH5GqsqUSome4NVMJWk',
-    appId: '1:387202563418:ios:18fd4f7afd299967ed8763',
+    appId: '1:387202563418:ios:73f0b9d7e423e747ed8763',
     messagingSenderId: '387202563418',
     projectId: 'gesbuk-58f74',
     storageBucket: 'gesbuk-58f74.appspot.com',
     androidClientId: '387202563418-5tfg08dkt7efbu6t783074r9io9u6dma.apps.googleusercontent.com',
-    iosClientId: '387202563418-k1j6f448rp1n5d7upjhjgam6mcsa68iv.apps.googleusercontent.com',
-    iosBundleId: 'com.gesbuk.user',
+    iosClientId: '387202563418-6ggc7p2vkemqlmnpjftaoocmntpapq2l.apps.googleusercontent.com',
+    iosBundleId: 'com.example.gesbukUser',
   );
 }

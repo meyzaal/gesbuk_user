@@ -58,6 +58,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "387202563418-ha8o7cveehfdsvll0i6oqfmi75vgumfq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gesbuk.user",
+            "certificate_hash": "4f38a1d3db6a0194c42056b24cbe0ec88a5b1a63"
+          }
+        },
+        {
           "client_id": "387202563418-icgfplqlpnsvshgptjua21mel421529f.apps.googleusercontent.com",
           "client_type": 3
         }

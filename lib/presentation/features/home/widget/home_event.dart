@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/event/event_model.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
-import '../../../configs/routes/routes.dart';
 import '../cubit/upcoming_event_cubit.dart';
 
 class HomeEvent extends StatelessWidget {
@@ -58,11 +57,10 @@ class _CreateEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tabsRouter = AutoTabsRouter.of(context);
+
     return ElevatedButton.icon(
-      onPressed: () => context.router.pushAndPopUntil(
-        const MyEventRoute(),
-        predicate: (route) => false,
-      ),
+      onPressed: () => tabsRouter.setActiveIndex(1), // change to my_event tab
       label: const Text('Buat event'),
       icon: const Icon(
         Icons.add_rounded,
