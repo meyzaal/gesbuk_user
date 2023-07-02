@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../domain/failures/failure.dart';
+import '../../domain/failures/failures.dart';
 import '../../domain/repositories/event_repository.dart';
 import '../../presentation/configs/services/services.dart';
 import '../models/event/event_model.dart';

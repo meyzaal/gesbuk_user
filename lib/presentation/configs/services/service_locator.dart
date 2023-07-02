@@ -14,7 +14,10 @@ Future<void> initializeServiceLocator() async {
   // Network Request
   serviceLocatorInstance.registerSingleton<Request>(Request());
 
-  await initializePackageInfoInstance();
+  // Package Info Plus
+  serviceLocatorInstance
+      .registerSingleton<PackageInfoService>(PackageInfoService());
+
   await initializeAuthenticationInstance();
   await initializeProfileInstance();
   await initializeEventInstance();

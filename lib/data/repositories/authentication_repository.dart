@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../domain/failures/failure.dart';
+import '../../domain/failures/failures.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../../presentation/configs/services/services.dart';
 import '../remote_data_sources/authentication_remote_data_source.dart';

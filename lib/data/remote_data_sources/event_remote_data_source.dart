@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-import '../../domain/failures/failure.dart';
+import '../../domain/failures/failures.dart';
 import '../../domain/providers/network_request.dart';
 import '../../presentation/configs/services/services.dart';
 import '../models/default_response/default_response_model.dart';

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../presentation/configs/services/services.dart';
-import '../failures/failure.dart';
+import '../failures/failures.dart';
 import '../repositories/authentication_repository.dart';
 
 class AuthenticationUseCase {
