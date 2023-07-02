@@ -8,7 +8,7 @@ abstract class GoogleAuthenticationService {
   User? getUser();
 }
 
-class GoogleAuthentiactionServiceImpl extends GoogleAuthenticationService {
+class GoogleAuthenticationServiceImpl extends GoogleAuthenticationService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 

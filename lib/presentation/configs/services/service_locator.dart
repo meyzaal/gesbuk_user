@@ -9,7 +9,7 @@ final serviceLocatorInstance = GetIt.instance;
 Future<void> initializeServiceLocator() async {
   // Google Authentication
   serviceLocatorInstance.registerLazySingleton<GoogleAuthenticationService>(
-      () => GoogleAuthentiactionServiceImpl());
+      () => GoogleAuthenticationServiceImpl());
 
   // Network Request
   serviceLocatorInstance.registerSingleton<Request>(Request());
