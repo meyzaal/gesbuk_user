@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/helpers/helpers.dart';
-import '../../home/cubit/upcoming_event_cubit.dart';
 import '../bloc/my_event_bloc.dart';
 
 class MyEventEnrollBottomSheet extends StatelessWidget {
-  final UpcomingEventCubit upcomingEventCubit;
 
   const MyEventEnrollBottomSheet({
     super.key,
-    required this.upcomingEventCubit,
   });
 
   @override
@@ -19,7 +16,6 @@ class MyEventEnrollBottomSheet extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => MyEventBloc()),
-        BlocProvider(create: (context) => upcomingEventCubit),
       ],
       child: BlocConsumer<MyEventBloc, MyEventState>(
         listener: (context, state) {
@@ -30,14 +26,10 @@ class MyEventEnrollBottomSheet extends StatelessWidget {
           }
 
           if (state.status == MyEventEnrollStatus.success) {
-            BlocProvider.of<UpcomingEventCubit>(context)
-                .getUpcomingEvent()
-                .then((_) {
-              SnackBarHelper.of(context).showSnackBar(
-                  content: 'Event berhasil ditambahkan!',
-                  type: SnackBarType.success);
-              context.router.pop(true);
-            });
+            SnackBarHelper.of(context).showSnackBar(
+                content: 'Event berhasil ditambahkan!',
+                type: SnackBarType.success);
+            context.router.pop(true);
           }
         },
         builder: (context, state) {

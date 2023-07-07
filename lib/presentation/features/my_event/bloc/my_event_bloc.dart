@@ -28,9 +28,12 @@ class MyEventBloc extends Bloc<MyEventEvent, MyEventState> {
 
     final result = await _eventUseCase.getUserEvents();
 
-    return result.fold(
+    result.fold(
         (failure) => emit(MyEventState.error(errorMessage: failure.message)),
-        (events) => emit(MyEventState.loaded(events: events)));
+        (events) => emit(
+            MyEventState.loaded(events: events, isUpdate: event.isUpdate)));
+
+    emit(state.copyWith(isUpdate: false));
   }
 
   void _onEventKeyChangedEvent(

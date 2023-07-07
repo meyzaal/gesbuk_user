@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gesbuk_user/presentation/features/my_event/bloc/my_event_bloc.dart';
 
 import '../../../../data/models/event/event_model.dart';
 import '../../../../domain/use_cases/event_use_case.dart';
@@ -11,7 +12,24 @@ part 'upcoming_event_state.dart';
 part 'upcoming_event_cubit.freezed.dart';
 
 class UpcomingEventCubit extends Cubit<UpcomingEventState> {
-  UpcomingEventCubit() : super(const UpcomingEventState.initial());
+  final MyEventBloc myEventBloc;
+
+  StreamSubscription? _myEventSubscription;
+
+  UpcomingEventCubit(this.myEventBloc)
+      : super(const UpcomingEventState.initial()) {
+    _myEventSubscription = myEventBloc.stream.listen((event) async {
+      if (event.isUpdate) {
+        return await getUpcomingEvent();
+      }
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _myEventSubscription?.cancel();
+    return super.close();
+  }
 
   Future<void> getUpcomingEvent() async {
     emit(const UpcomingEventState.loading());

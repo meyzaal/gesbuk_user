@@ -33,7 +33,7 @@ class EventDetailAppBar extends StatelessWidget {
             tooltip: 'Edit',
             onPressed: () {},
             icon: const Icon(Icons.edit_rounded)),
-        const SizedBox(width: 2.0)
+        const SizedBox(width: 8.0)
       ],
       flexibleSpace: FlexibleSpaceBar(
         background: GesbukNetworkImage(imageUrl: event.imageUrl),

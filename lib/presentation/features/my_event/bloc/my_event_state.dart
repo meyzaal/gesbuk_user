@@ -7,6 +7,7 @@ class MyEventState with _$MyEventState {
     @Default('') String errorMessage,
     @Default('') String eventKey,
     @Default(MyEventEnrollStatus.initial) MyEventEnrollStatus status,
+    @Default(false)bool isUpdate,
   }) = MyEventInitialState;
 
   const factory MyEventState.loading({
@@ -14,6 +15,7 @@ class MyEventState with _$MyEventState {
     @Default('') String errorMessage,
     @Default('') String eventKey,
     @Default(MyEventEnrollStatus.initial) MyEventEnrollStatus status,
+    @Default(false)bool isUpdate,
   }) = MyEventLoadingState;
 
   const factory MyEventState.error({
@@ -21,6 +23,7 @@ class MyEventState with _$MyEventState {
     @Default('Terjadi kesalahan') String errorMessage,
     @Default('') String eventKey,
     @Default(MyEventEnrollStatus.initial) MyEventEnrollStatus status,
+    @Default(false)bool isUpdate,
   }) = MyEventErrorState;
 
   const factory MyEventState.loaded({
@@ -28,5 +31,6 @@ class MyEventState with _$MyEventState {
     @Default('') String errorMessage,
     @Default('') String eventKey,
     @Default(MyEventEnrollStatus.initial) MyEventEnrollStatus status,
+    @Default(false)bool isUpdate,
   }) = MyEventLoadedState;
 }

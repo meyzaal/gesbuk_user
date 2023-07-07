@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/widgets/widgets.dart';
-import '../../home/cubit/upcoming_event_cubit.dart';
 import '../bloc/my_event_bloc.dart';
 import '../widget/my_event_enroll_event.dart';
 import '../widget/my_event_user_events.dart';
 
 class MyEventView extends StatelessWidget {
-  final UpcomingEventCubit upcomingEventCubit;
+  final MyEventBloc myEventBloc;
 
-  const MyEventView({super.key, required this.upcomingEventCubit});
+  const MyEventView({super.key, required this.myEventBloc});
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> items =  [
-      MyEventEnrollEvent(upcomingEventCubit: upcomingEventCubit),
+    List<Widget> items = [
+      MyEventEnrollEvent(myEventBloc: myEventBloc),
       const MyEventUserEvents()
     ];
 
@@ -31,14 +30,14 @@ class MyEventView extends StatelessWidget {
                   state.errorMessage.contains('connection-timeout'),
               onPressed: () => context
                   .read<MyEventBloc>()
-                  .add(const MyEventEvent.getEventsUserEvent()),
+                  .add(const MyEventEvent.getEventsUserEvent(false)),
             );
           }
 
           return RefreshIndicator(
             onRefresh: () async => context
                 .read<MyEventBloc>()
-                .add(const MyEventEvent.getEventsUserEvent()),
+                .add(const MyEventEvent.getEventsUserEvent(true)),
             child: ListView.builder(
                 physics: const AlwaysScrollableScrollPhysics(
                     parent: BouncingScrollPhysics()),
