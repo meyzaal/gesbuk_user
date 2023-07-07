@@ -83,6 +83,18 @@ class Request {
         data: data, queryParameters: queryParameters);
   }
 
+  Future<Response<T>> put<T>(
+    String path, {
+    required bool requiresAuthToken,
+    Object? data,
+    JSON? queryParameters,
+  }) async {
+    if (requiresAuthToken) await _setToken();
+
+    return await _dio.put<T>(path,
+        data: data, queryParameters: queryParameters);
+  }
+
   Future<void> _setToken() async {
     final token = await serviceLocatorInstance<GoogleAuthenticationService>()
         .getIdToken();

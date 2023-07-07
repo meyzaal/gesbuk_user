@@ -6,9 +6,17 @@ import '../failures/failures.dart';
 import '../repositories/event_repository.dart';
 
 class EventUseCase {
+  final _eventRepository = serviceLocatorInstance<EventRepository>();
+
   Future<Either<Failure, List<Event>>> getUpcomingEvents() async =>
-      await serviceLocatorInstance<EventRepository>().getUpcomingEvents();
+      await _eventRepository.getUpcomingEvents();
 
   Future<Either<Failure, List<Event>>> getUserEvents() async =>
-      await serviceLocatorInstance<EventRepository>().getUserEvents();
+      await _eventRepository.getUserEvents();
+
+  Future<Either<Failure, void>> enrollEvent(String eventKey) async =>
+      await _eventRepository.enrollEvent(eventKey);
+
+  Future<Either<Failure, Event>> getEventById(String eventId) async =>
+      await _eventRepository.getEventById(eventId);
 }

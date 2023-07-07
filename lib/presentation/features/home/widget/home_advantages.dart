@@ -47,8 +47,6 @@ class _AdvantageContent extends ListTile {
     required String title,
     required String subtitle,
   }) : super(
-          horizontalTitleGap: 4.0,
-          isThreeLine: true,
           leading: Icon(
             icon,
             color: AppColor.primaryBlue,

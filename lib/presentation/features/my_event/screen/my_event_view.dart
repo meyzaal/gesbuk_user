@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gesbuk_user/presentation/commons/widgets/widgets.dart';
 
+import '../../../commons/widgets/widgets.dart';
+import '../../home/cubit/upcoming_event_cubit.dart';
 import '../bloc/my_event_bloc.dart';
 import '../widget/my_event_enroll_event.dart';
 import '../widget/my_event_user_events.dart';
 
 class MyEventView extends StatelessWidget {
-  const MyEventView({super.key});
+  final UpcomingEventCubit upcomingEventCubit;
+
+  const MyEventView({super.key, required this.upcomingEventCubit});
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> items = const [MyEventEnrollEvent(), MyEventUserEvents()];
+    List<Widget> items =  [
+      MyEventEnrollEvent(upcomingEventCubit: upcomingEventCubit),
+      const MyEventUserEvents()
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -33,12 +39,10 @@ class MyEventView extends StatelessWidget {
             onRefresh: () async => context
                 .read<MyEventBloc>()
                 .add(const MyEventEvent.getEventsUserEvent()),
-            child: ListView.separated(
+            child: ListView.builder(
                 physics: const AlwaysScrollableScrollPhysics(
                     parent: BouncingScrollPhysics()),
                 itemBuilder: (context, index) => items[index],
-                separatorBuilder: (context, index) =>
-                    const Divider(thickness: 8.0),
                 itemCount: items.length),
           );
         },

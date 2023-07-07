@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/event/event_model.dart';
 import '../../../commons/themes/themes.dart';
 import '../../../commons/widgets/widgets.dart';
+import '../../../configs/routes/routes.dart';
 import '../cubit/upcoming_event_cubit.dart';
 
 class HomeEvent extends StatelessWidget {
@@ -118,7 +119,8 @@ class _UpcomingEvents extends StatelessWidget {
                     imageUrl: event.imageUrl,
                     guestCount: event.guestCount,
                     withShadow: false,
-                    onTap: () {},
+                    onTap: () => context.router
+                        .push(EventDetailRoute(eventId: event.id)),
                   )));
         },
         itemCount: events.length,

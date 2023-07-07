@@ -5,11 +5,13 @@ import '../failures/failures.dart';
 import '../repositories/authentication_repository.dart';
 
 class AuthenticationUseCase {
-  Future<Either<Failure, bool>> signInWithGoogle() async =>
-      await serviceLocatorInstance<AuthenticationRepository>()
-          .signInWithGoogle();
+  final _authenticationRepository =
+      serviceLocatorInstance<AuthenticationRepository>();
+  final _googleAuthService =
+      serviceLocatorInstance<GoogleAuthenticationService>();
 
-  Future<bool> logoutGoogle() async =>
-      await serviceLocatorInstance<GoogleAuthenticationService>()
-          .signOutGoogle();
+  Future<Either<Failure, bool>> signInWithGoogle() async =>
+      await _authenticationRepository.signInWithGoogle();
+
+  Future<bool> logoutGoogle() async => await _googleAuthService.signOutGoogle();
 }

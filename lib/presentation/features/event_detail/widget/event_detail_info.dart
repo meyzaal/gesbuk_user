@@ -1,96 +1,68 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-import '../../../commons/widgets/widgets.dart';
-import '../../../configs/routes/routes.dart';
+import '../../../../data/models/event/event_model.dart';
 
 class EventDetailInfo extends StatelessWidget {
-  const EventDetailInfo({super.key});
+  final Event event;
+
+  const EventDetailInfo({
+    super.key,
+    required this.event,
+  });
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl =
-        'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80';
+    final date = DateTime.parse(event.startDate);
+    final formattedDate = DateFormat.yMMMMd('id_ID').format(date);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const AspectRatio(
-          aspectRatio: 16 / 9,
-          child: GesbukNetworkImage(imageUrl: imageUrl),
-        ),
-        const SizedBox(height: 16.0),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Event Name',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(height: 8.0),
-              _buildIconWithText(context,
-                  iconData: Icons.pin_drop_rounded, text: 'Event Location '),
-              _buildIconWithText(context,
-                  iconData: Icons.people_rounded, text: 'Guest Count'),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: OutlinedButton.icon(
-                    onPressed: () => context.router.push(GuestListRoute(
-                          onGuestCheckin: (update) => print('value = $update'),
-                        )),
-                    icon: const Icon(
-                      Icons.people_alt_rounded,
-                      size: 18.0,
-                    ),
-                    label: const Text('Daftar tamu')),
-              ),
-              const SizedBox(width: 8.0),
-              Expanded(
-                child: ElevatedButton.icon(
-                    onPressed: () => context.router.push(ScannerRoute(
-                          onGuestCheckin: (update) => print('value = $update'),
-                        )),
-                    icon: const Icon(
-                      Icons.qr_code_scanner_rounded,
-                      size: 18.0,
-                    ),
-                    label: const Text('Pindai QR')),
-              ),
-            ],
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _buildIconWithText(BuildContext context,
-      {required IconData iconData, required String text}) {
-    return IntrinsicHeight(
-      child: Row(
+    return SliverToBoxAdapter(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Align(
-              alignment: Alignment.topCenter,
-              child: Icon(iconData, size: 16.0)),
-          const SizedBox(width: 8.0),
-          Flexible(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyLarge,
+          ListTile(
+            isThreeLine: true,
+            minVerticalPadding: 16.0,
+            title: Text(
+              event.name,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            subtitle: Text(
+              event.location,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            child: Wrap(
+              spacing: 16.0,
+              children: [
+                _buildIconText(
+                    iconData: Icons.event_rounded, text: formattedDate),
+                _buildIconText(
+                    iconData: Icons.people_rounded,
+                    text: '${event.guestCount} tamu')
+              ],
             ),
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildIconText({required IconData iconData, required String text}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          iconData,
+          size: 20.0,
+        ),
+        const SizedBox(width: 8.0),
+        Text(text),
+      ],
     );
   }
 }

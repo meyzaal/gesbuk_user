@@ -19,32 +19,45 @@ mixin _$MyEventEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEventsUserEvent,
+    required TResult Function(String eventKey) eventKeyChangedEvent,
+    required TResult Function() validateEventKeyEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEventsUserEvent,
+    TResult? Function(String eventKey)? eventKeyChangedEvent,
+    TResult? Function()? validateEventKeyEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEventsUserEvent,
+    TResult Function(String eventKey)? eventKeyChangedEvent,
+    TResult Function()? validateEventKeyEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetEventsUserEvent value) getEventsUserEvent,
+    required TResult Function(EventKeyChangedEvent value) eventKeyChangedEvent,
+    required TResult Function(ValidateEventKeyEvent value)
+        validateEventKeyEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult? Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult? Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +120,8 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getEventsUserEvent,
+    required TResult Function(String eventKey) eventKeyChangedEvent,
+    required TResult Function() validateEventKeyEvent,
   }) {
     return getEventsUserEvent();
   }
@@ -115,6 +130,8 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getEventsUserEvent,
+    TResult? Function(String eventKey)? eventKeyChangedEvent,
+    TResult? Function()? validateEventKeyEvent,
   }) {
     return getEventsUserEvent?.call();
   }
@@ -123,6 +140,8 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getEventsUserEvent,
+    TResult Function(String eventKey)? eventKeyChangedEvent,
+    TResult Function()? validateEventKeyEvent,
     required TResult orElse(),
   }) {
     if (getEventsUserEvent != null) {
@@ -135,6 +154,9 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetEventsUserEvent value) getEventsUserEvent,
+    required TResult Function(EventKeyChangedEvent value) eventKeyChangedEvent,
+    required TResult Function(ValidateEventKeyEvent value)
+        validateEventKeyEvent,
   }) {
     return getEventsUserEvent(this);
   }
@@ -143,6 +165,8 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult? Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult? Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
   }) {
     return getEventsUserEvent?.call(this);
   }
@@ -151,6 +175,8 @@ class _$GetEventsUserEvent implements GetEventsUserEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
     required TResult orElse(),
   }) {
     if (getEventsUserEvent != null) {
@@ -165,31 +191,309 @@ abstract class GetEventsUserEvent implements MyEventEvent {
 }
 
 /// @nodoc
+abstract class _$$EventKeyChangedEventCopyWith<$Res> {
+  factory _$$EventKeyChangedEventCopyWith(_$EventKeyChangedEvent value,
+          $Res Function(_$EventKeyChangedEvent) then) =
+      __$$EventKeyChangedEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String eventKey});
+}
+
+/// @nodoc
+class __$$EventKeyChangedEventCopyWithImpl<$Res>
+    extends _$MyEventEventCopyWithImpl<$Res, _$EventKeyChangedEvent>
+    implements _$$EventKeyChangedEventCopyWith<$Res> {
+  __$$EventKeyChangedEventCopyWithImpl(_$EventKeyChangedEvent _value,
+      $Res Function(_$EventKeyChangedEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventKey = null,
+  }) {
+    return _then(_$EventKeyChangedEvent(
+      null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EventKeyChangedEvent implements EventKeyChangedEvent {
+  const _$EventKeyChangedEvent(this.eventKey);
+
+  @override
+  final String eventKey;
+
+  @override
+  String toString() {
+    return 'MyEventEvent.eventKeyChangedEvent(eventKey: $eventKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EventKeyChangedEvent &&
+            (identical(other.eventKey, eventKey) ||
+                other.eventKey == eventKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, eventKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EventKeyChangedEventCopyWith<_$EventKeyChangedEvent> get copyWith =>
+      __$$EventKeyChangedEventCopyWithImpl<_$EventKeyChangedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getEventsUserEvent,
+    required TResult Function(String eventKey) eventKeyChangedEvent,
+    required TResult Function() validateEventKeyEvent,
+  }) {
+    return eventKeyChangedEvent(eventKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getEventsUserEvent,
+    TResult? Function(String eventKey)? eventKeyChangedEvent,
+    TResult? Function()? validateEventKeyEvent,
+  }) {
+    return eventKeyChangedEvent?.call(eventKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getEventsUserEvent,
+    TResult Function(String eventKey)? eventKeyChangedEvent,
+    TResult Function()? validateEventKeyEvent,
+    required TResult orElse(),
+  }) {
+    if (eventKeyChangedEvent != null) {
+      return eventKeyChangedEvent(eventKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetEventsUserEvent value) getEventsUserEvent,
+    required TResult Function(EventKeyChangedEvent value) eventKeyChangedEvent,
+    required TResult Function(ValidateEventKeyEvent value)
+        validateEventKeyEvent,
+  }) {
+    return eventKeyChangedEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult? Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult? Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
+  }) {
+    return eventKeyChangedEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
+    required TResult orElse(),
+  }) {
+    if (eventKeyChangedEvent != null) {
+      return eventKeyChangedEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EventKeyChangedEvent implements MyEventEvent {
+  const factory EventKeyChangedEvent(final String eventKey) =
+      _$EventKeyChangedEvent;
+
+  String get eventKey;
+  @JsonKey(ignore: true)
+  _$$EventKeyChangedEventCopyWith<_$EventKeyChangedEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ValidateEventKeyEventCopyWith<$Res> {
+  factory _$$ValidateEventKeyEventCopyWith(_$ValidateEventKeyEvent value,
+          $Res Function(_$ValidateEventKeyEvent) then) =
+      __$$ValidateEventKeyEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ValidateEventKeyEventCopyWithImpl<$Res>
+    extends _$MyEventEventCopyWithImpl<$Res, _$ValidateEventKeyEvent>
+    implements _$$ValidateEventKeyEventCopyWith<$Res> {
+  __$$ValidateEventKeyEventCopyWithImpl(_$ValidateEventKeyEvent _value,
+      $Res Function(_$ValidateEventKeyEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ValidateEventKeyEvent implements ValidateEventKeyEvent {
+  const _$ValidateEventKeyEvent();
+
+  @override
+  String toString() {
+    return 'MyEventEvent.validateEventKeyEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ValidateEventKeyEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getEventsUserEvent,
+    required TResult Function(String eventKey) eventKeyChangedEvent,
+    required TResult Function() validateEventKeyEvent,
+  }) {
+    return validateEventKeyEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getEventsUserEvent,
+    TResult? Function(String eventKey)? eventKeyChangedEvent,
+    TResult? Function()? validateEventKeyEvent,
+  }) {
+    return validateEventKeyEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getEventsUserEvent,
+    TResult Function(String eventKey)? eventKeyChangedEvent,
+    TResult Function()? validateEventKeyEvent,
+    required TResult orElse(),
+  }) {
+    if (validateEventKeyEvent != null) {
+      return validateEventKeyEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetEventsUserEvent value) getEventsUserEvent,
+    required TResult Function(EventKeyChangedEvent value) eventKeyChangedEvent,
+    required TResult Function(ValidateEventKeyEvent value)
+        validateEventKeyEvent,
+  }) {
+    return validateEventKeyEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult? Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult? Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
+  }) {
+    return validateEventKeyEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetEventsUserEvent value)? getEventsUserEvent,
+    TResult Function(EventKeyChangedEvent value)? eventKeyChangedEvent,
+    TResult Function(ValidateEventKeyEvent value)? validateEventKeyEvent,
+    required TResult orElse(),
+  }) {
+    if (validateEventKeyEvent != null) {
+      return validateEventKeyEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ValidateEventKeyEvent implements MyEventEvent {
+  const factory ValidateEventKeyEvent() = _$ValidateEventKeyEvent;
+}
+
+/// @nodoc
 mixin _$MyEventState {
   List<Event> get events => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  String get eventKey => throw _privateConstructorUsedError;
+  MyEventEnrollStatus get status => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -230,7 +534,11 @@ abstract class $MyEventStateCopyWith<$Res> {
           MyEventState value, $Res Function(MyEventState) then) =
       _$MyEventStateCopyWithImpl<$Res, MyEventState>;
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events,
+      String errorMessage,
+      String eventKey,
+      MyEventEnrollStatus status});
 }
 
 /// @nodoc
@@ -248,6 +556,8 @@ class _$MyEventStateCopyWithImpl<$Res, $Val extends MyEventState>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? eventKey = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       events: null == events
@@ -258,6 +568,14 @@ class _$MyEventStateCopyWithImpl<$Res, $Val extends MyEventState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      eventKey: null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MyEventEnrollStatus,
     ) as $Val);
   }
 }
@@ -270,7 +588,11 @@ abstract class _$$MyEventInitialStateCopyWith<$Res>
       __$$MyEventInitialStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events,
+      String errorMessage,
+      String eventKey,
+      MyEventEnrollStatus status});
 }
 
 /// @nodoc
@@ -286,6 +608,8 @@ class __$$MyEventInitialStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? eventKey = null,
+    Object? status = null,
   }) {
     return _then(_$MyEventInitialState(
       events: null == events
@@ -296,6 +620,14 @@ class __$$MyEventInitialStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      eventKey: null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MyEventEnrollStatus,
     ));
   }
 }
@@ -304,7 +636,10 @@ class __$$MyEventInitialStateCopyWithImpl<$Res>
 
 class _$MyEventInitialState implements MyEventInitialState {
   const _$MyEventInitialState(
-      {final List<Event> events = const <Event>[], this.errorMessage = ''})
+      {final List<Event> events = const <Event>[],
+      this.errorMessage = '',
+      this.eventKey = '',
+      this.status = MyEventEnrollStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -319,10 +654,16 @@ class _$MyEventInitialState implements MyEventInitialState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final String eventKey;
+  @override
+  @JsonKey()
+  final MyEventEnrollStatus status;
 
   @override
   String toString() {
-    return 'MyEventState.initial(events: $events, errorMessage: $errorMessage)';
+    return 'MyEventState.initial(events: $events, errorMessage: $errorMessage, eventKey: $eventKey, status: $status)';
   }
 
   @override
@@ -332,12 +673,19 @@ class _$MyEventInitialState implements MyEventInitialState {
             other is _$MyEventInitialState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.eventKey, eventKey) ||
+                other.eventKey == eventKey) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_events),
+      errorMessage,
+      eventKey,
+      status);
 
   @JsonKey(ignore: true)
   @override
@@ -349,36 +697,60 @@ class _$MyEventInitialState implements MyEventInitialState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loaded,
   }) {
-    return initial(events, errorMessage);
+    return initial(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
   }) {
-    return initial?.call(events, errorMessage);
+    return initial?.call(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(events, errorMessage);
+      return initial(events, errorMessage, eventKey, status);
     }
     return orElse();
   }
@@ -424,12 +796,18 @@ class _$MyEventInitialState implements MyEventInitialState {
 abstract class MyEventInitialState implements MyEventState {
   const factory MyEventInitialState(
       {final List<Event> events,
-      final String errorMessage}) = _$MyEventInitialState;
+      final String errorMessage,
+      final String eventKey,
+      final MyEventEnrollStatus status}) = _$MyEventInitialState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  String get eventKey;
+  @override
+  MyEventEnrollStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$MyEventInitialStateCopyWith<_$MyEventInitialState> get copyWith =>
@@ -444,7 +822,11 @@ abstract class _$$MyEventLoadingStateCopyWith<$Res>
       __$$MyEventLoadingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events,
+      String errorMessage,
+      String eventKey,
+      MyEventEnrollStatus status});
 }
 
 /// @nodoc
@@ -460,6 +842,8 @@ class __$$MyEventLoadingStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? eventKey = null,
+    Object? status = null,
   }) {
     return _then(_$MyEventLoadingState(
       events: null == events
@@ -470,6 +854,14 @@ class __$$MyEventLoadingStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      eventKey: null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MyEventEnrollStatus,
     ));
   }
 }
@@ -478,7 +870,10 @@ class __$$MyEventLoadingStateCopyWithImpl<$Res>
 
 class _$MyEventLoadingState implements MyEventLoadingState {
   const _$MyEventLoadingState(
-      {final List<Event> events = const <Event>[], this.errorMessage = ''})
+      {final List<Event> events = const <Event>[],
+      this.errorMessage = '',
+      this.eventKey = '',
+      this.status = MyEventEnrollStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -493,10 +888,16 @@ class _$MyEventLoadingState implements MyEventLoadingState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final String eventKey;
+  @override
+  @JsonKey()
+  final MyEventEnrollStatus status;
 
   @override
   String toString() {
-    return 'MyEventState.loading(events: $events, errorMessage: $errorMessage)';
+    return 'MyEventState.loading(events: $events, errorMessage: $errorMessage, eventKey: $eventKey, status: $status)';
   }
 
   @override
@@ -506,12 +907,19 @@ class _$MyEventLoadingState implements MyEventLoadingState {
             other is _$MyEventLoadingState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.eventKey, eventKey) ||
+                other.eventKey == eventKey) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_events),
+      errorMessage,
+      eventKey,
+      status);
 
   @JsonKey(ignore: true)
   @override
@@ -523,36 +931,60 @@ class _$MyEventLoadingState implements MyEventLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loaded,
   }) {
-    return loading(events, errorMessage);
+    return loading(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
   }) {
-    return loading?.call(events, errorMessage);
+    return loading?.call(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(events, errorMessage);
+      return loading(events, errorMessage, eventKey, status);
     }
     return orElse();
   }
@@ -598,12 +1030,18 @@ class _$MyEventLoadingState implements MyEventLoadingState {
 abstract class MyEventLoadingState implements MyEventState {
   const factory MyEventLoadingState(
       {final List<Event> events,
-      final String errorMessage}) = _$MyEventLoadingState;
+      final String errorMessage,
+      final String eventKey,
+      final MyEventEnrollStatus status}) = _$MyEventLoadingState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  String get eventKey;
+  @override
+  MyEventEnrollStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$MyEventLoadingStateCopyWith<_$MyEventLoadingState> get copyWith =>
@@ -618,7 +1056,11 @@ abstract class _$$MyEventErrorStateCopyWith<$Res>
       __$$MyEventErrorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events,
+      String errorMessage,
+      String eventKey,
+      MyEventEnrollStatus status});
 }
 
 /// @nodoc
@@ -634,6 +1076,8 @@ class __$$MyEventErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? eventKey = null,
+    Object? status = null,
   }) {
     return _then(_$MyEventErrorState(
       events: null == events
@@ -644,6 +1088,14 @@ class __$$MyEventErrorStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      eventKey: null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MyEventEnrollStatus,
     ));
   }
 }
@@ -653,7 +1105,9 @@ class __$$MyEventErrorStateCopyWithImpl<$Res>
 class _$MyEventErrorState implements MyEventErrorState {
   const _$MyEventErrorState(
       {final List<Event> events = const <Event>[],
-      this.errorMessage = 'Terjadi kesalahan'})
+      this.errorMessage = 'Terjadi kesalahan',
+      this.eventKey = '',
+      this.status = MyEventEnrollStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -668,10 +1122,16 @@ class _$MyEventErrorState implements MyEventErrorState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final String eventKey;
+  @override
+  @JsonKey()
+  final MyEventEnrollStatus status;
 
   @override
   String toString() {
-    return 'MyEventState.error(events: $events, errorMessage: $errorMessage)';
+    return 'MyEventState.error(events: $events, errorMessage: $errorMessage, eventKey: $eventKey, status: $status)';
   }
 
   @override
@@ -681,12 +1141,19 @@ class _$MyEventErrorState implements MyEventErrorState {
             other is _$MyEventErrorState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.eventKey, eventKey) ||
+                other.eventKey == eventKey) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_events),
+      errorMessage,
+      eventKey,
+      status);
 
   @JsonKey(ignore: true)
   @override
@@ -697,36 +1164,60 @@ class _$MyEventErrorState implements MyEventErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loaded,
   }) {
-    return error(events, errorMessage);
+    return error(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
   }) {
-    return error?.call(events, errorMessage);
+    return error?.call(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(events, errorMessage);
+      return error(events, errorMessage, eventKey, status);
     }
     return orElse();
   }
@@ -772,12 +1263,18 @@ class _$MyEventErrorState implements MyEventErrorState {
 abstract class MyEventErrorState implements MyEventState {
   const factory MyEventErrorState(
       {final List<Event> events,
-      final String errorMessage}) = _$MyEventErrorState;
+      final String errorMessage,
+      final String eventKey,
+      final MyEventEnrollStatus status}) = _$MyEventErrorState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  String get eventKey;
+  @override
+  MyEventEnrollStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$MyEventErrorStateCopyWith<_$MyEventErrorState> get copyWith =>
@@ -792,7 +1289,11 @@ abstract class _$$MyEventLoadedStateCopyWith<$Res>
       __$$MyEventLoadedStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Event> events, String errorMessage});
+  $Res call(
+      {List<Event> events,
+      String errorMessage,
+      String eventKey,
+      MyEventEnrollStatus status});
 }
 
 /// @nodoc
@@ -808,6 +1309,8 @@ class __$$MyEventLoadedStateCopyWithImpl<$Res>
   $Res call({
     Object? events = null,
     Object? errorMessage = null,
+    Object? eventKey = null,
+    Object? status = null,
   }) {
     return _then(_$MyEventLoadedState(
       events: null == events
@@ -818,6 +1321,14 @@ class __$$MyEventLoadedStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      eventKey: null == eventKey
+          ? _value.eventKey
+          : eventKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MyEventEnrollStatus,
     ));
   }
 }
@@ -826,7 +1337,10 @@ class __$$MyEventLoadedStateCopyWithImpl<$Res>
 
 class _$MyEventLoadedState implements MyEventLoadedState {
   const _$MyEventLoadedState(
-      {final List<Event> events = const <Event>[], this.errorMessage = ''})
+      {final List<Event> events = const <Event>[],
+      this.errorMessage = '',
+      this.eventKey = '',
+      this.status = MyEventEnrollStatus.initial})
       : _events = events;
 
   final List<Event> _events;
@@ -841,10 +1355,16 @@ class _$MyEventLoadedState implements MyEventLoadedState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final String eventKey;
+  @override
+  @JsonKey()
+  final MyEventEnrollStatus status;
 
   @override
   String toString() {
-    return 'MyEventState.loaded(events: $events, errorMessage: $errorMessage)';
+    return 'MyEventState.loaded(events: $events, errorMessage: $errorMessage, eventKey: $eventKey, status: $status)';
   }
 
   @override
@@ -854,12 +1374,19 @@ class _$MyEventLoadedState implements MyEventLoadedState {
             other is _$MyEventLoadedState &&
             const DeepCollectionEquality().equals(other._events, _events) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.eventKey, eventKey) ||
+                other.eventKey == eventKey) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_events), errorMessage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_events),
+      errorMessage,
+      eventKey,
+      status);
 
   @JsonKey(ignore: true)
   @override
@@ -871,36 +1398,60 @@ class _$MyEventLoadedState implements MyEventLoadedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Event> events, String errorMessage) initial,
-    required TResult Function(List<Event> events, String errorMessage) loading,
-    required TResult Function(List<Event> events, String errorMessage) error,
-    required TResult Function(List<Event> events, String errorMessage) loaded,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        initial,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loading,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        error,
+    required TResult Function(List<Event> events, String errorMessage,
+            String eventKey, MyEventEnrollStatus status)
+        loaded,
   }) {
-    return loaded(events, errorMessage);
+    return loaded(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Event> events, String errorMessage)? initial,
-    TResult? Function(List<Event> events, String errorMessage)? loading,
-    TResult? Function(List<Event> events, String errorMessage)? error,
-    TResult? Function(List<Event> events, String errorMessage)? loaded,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult? Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
   }) {
-    return loaded?.call(events, errorMessage);
+    return loaded?.call(events, errorMessage, eventKey, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Event> events, String errorMessage)? initial,
-    TResult Function(List<Event> events, String errorMessage)? loading,
-    TResult Function(List<Event> events, String errorMessage)? error,
-    TResult Function(List<Event> events, String errorMessage)? loaded,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        initial,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loading,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        error,
+    TResult Function(List<Event> events, String errorMessage, String eventKey,
+            MyEventEnrollStatus status)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(events, errorMessage);
+      return loaded(events, errorMessage, eventKey, status);
     }
     return orElse();
   }
@@ -946,12 +1497,18 @@ class _$MyEventLoadedState implements MyEventLoadedState {
 abstract class MyEventLoadedState implements MyEventState {
   const factory MyEventLoadedState(
       {final List<Event> events,
-      final String errorMessage}) = _$MyEventLoadedState;
+      final String errorMessage,
+      final String eventKey,
+      final MyEventEnrollStatus status}) = _$MyEventLoadedState;
 
   @override
   List<Event> get events;
   @override
   String get errorMessage;
+  @override
+  String get eventKey;
+  @override
+  MyEventEnrollStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$MyEventLoadedStateCopyWith<_$MyEventLoadedState> get copyWith =>

@@ -8,7 +8,9 @@ import 'home_view.dart';
 
 @RoutePage(name: 'HomeRoute')
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final UpcomingEventCubit upcomingEventCubit;
+
+  const HomePage({super.key, required this.upcomingEventCubit});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class HomePage extends StatelessWidget {
               ProfileBloc()..add(const ProfileEvent.getUserEvent()),
         ),
         BlocProvider(
-          create: (context) => UpcomingEventCubit()..getUpcomingEvent(),
+          create: (context) => upcomingEventCubit..getUpcomingEvent(),
         ),
       ],
       child: const HomeView(),

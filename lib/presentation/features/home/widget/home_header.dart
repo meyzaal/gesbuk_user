@@ -70,7 +70,7 @@ class HomeHeader extends StatelessWidget {
         }
 
         return Text(
-          'Meyza Ulil Albab',
+          state.user.name,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context)

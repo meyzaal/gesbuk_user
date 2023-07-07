@@ -6,6 +6,8 @@ import '../failures/failures.dart';
 import '../repositories/profile_repository.dart';
 
 class ProfileUseCase {
+  final _profileRepository = serviceLocatorInstance<ProfileRepository>();
+
   Future<Either<Failure, GesbukUser>> getProfile() async =>
-      await serviceLocatorInstance<ProfileRepository>().getProfile();
+      await _profileRepository.getProfile();
 }

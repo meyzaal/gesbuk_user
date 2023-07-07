@@ -19,7 +19,6 @@ class AppRouter extends $AppRouter {
           page: MainRoute.page,
           path: '/main',
           children: [
-            RedirectRoute(path: '', redirectTo: 'home'),
             AutoRoute(page: HomeRoute.page, path: 'home'),
             AutoRoute(page: MyEventRoute.page, path: 'my-event'),
             AutoRoute(page: PriceListRoute.page, path: 'price-list'),

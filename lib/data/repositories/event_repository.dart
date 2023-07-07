@@ -7,11 +7,21 @@ import '../models/event/event_model.dart';
 import '../remote_data_sources/event_remote_data_source.dart';
 
 class EventRepositoryImpl extends EventRepository {
+  final _eventRDS = serviceLocatorInstance<EventRemoteDataSource>();
+
   @override
   Future<Either<Failure, List<Event>>> getUpcomingEvents() async =>
-      await serviceLocatorInstance<EventRemoteDataSource>().getUpcomingEvents();
+      await _eventRDS.getUpcomingEvents();
 
   @override
   Future<Either<Failure, List<Event>>> getUserEvents() async =>
-      await serviceLocatorInstance<EventRemoteDataSource>().getUserEvents();
+      await _eventRDS.getUserEvents();
+
+  @override
+  Future<Either<Failure, void>> enrollEvent(String eventKey) async =>
+      await _eventRDS.enrollEvent(eventKey);
+
+  @override
+  Future<Either<Failure, Event>> getEventById(String eventId) async =>
+      await _eventRDS.getEventById(eventId);
 }

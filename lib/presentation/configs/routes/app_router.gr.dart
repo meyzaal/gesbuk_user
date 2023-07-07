@@ -14,6 +14,8 @@ import 'package:gesbuk_user/presentation/features/event_detail/screen/event_deta
     as _i1;
 import 'package:gesbuk_user/presentation/features/guest_list/screen/guest_list_page.dart'
     as _i2;
+import 'package:gesbuk_user/presentation/features/home/cubit/upcoming_event_cubit.dart'
+    as _i13;
 import 'package:gesbuk_user/presentation/features/home/screen/home_page.dart'
     as _i3;
 import 'package:gesbuk_user/presentation/features/login/screen/login_page.dart'
@@ -36,9 +38,13 @@ abstract class $AppRouter extends _i11.RootStackRouter {
   @override
   final Map<String, _i11.PageFactory> pagesMap = {
     EventDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<EventDetailRouteArgs>();
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.EventDetailPage(),
+        child: _i1.EventDetailPage(
+          key: args.key,
+          eventId: args.eventId,
+        ),
       );
     },
     GuestListRoute.name: (routeData) {
@@ -52,9 +58,13 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeRouteArgs>();
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.HomePage(),
+        child: _i3.HomePage(
+          key: args.key,
+          upcomingEventCubit: args.upcomingEventCubit,
+        ),
       );
     },
     LoginRoute.name: (routeData) {
@@ -70,9 +80,13 @@ abstract class $AppRouter extends _i11.RootStackRouter {
       );
     },
     MyEventRoute.name: (routeData) {
+      final args = routeData.argsAs<MyEventRouteArgs>();
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.MyEventPage(),
+        child: _i6.MyEventPage(
+          key: args.key,
+          upcomingEventCubit: args.upcomingEventCubit,
+        ),
       );
     },
     PriceListRoute.name: (routeData) {
@@ -108,16 +122,40 @@ abstract class $AppRouter extends _i11.RootStackRouter {
 
 /// generated route for
 /// [_i1.EventDetailPage]
-class EventDetailRoute extends _i11.PageRouteInfo<void> {
-  const EventDetailRoute({List<_i11.PageRouteInfo>? children})
-      : super(
+class EventDetailRoute extends _i11.PageRouteInfo<EventDetailRouteArgs> {
+  EventDetailRoute({
+    _i12.Key? key,
+    required String eventId,
+    List<_i11.PageRouteInfo>? children,
+  }) : super(
           EventDetailRoute.name,
+          args: EventDetailRouteArgs(
+            key: key,
+            eventId: eventId,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'EventDetailRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i11.PageInfo<EventDetailRouteArgs> page =
+      _i11.PageInfo<EventDetailRouteArgs>(name);
+}
+
+class EventDetailRouteArgs {
+  const EventDetailRouteArgs({
+    this.key,
+    required this.eventId,
+  });
+
+  final _i12.Key? key;
+
+  final String eventId;
+
+  @override
+  String toString() {
+    return 'EventDetailRouteArgs{key: $key, eventId: $eventId}';
+  }
 }
 
 /// generated route for
@@ -160,16 +198,40 @@ class GuestListRouteArgs {
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i11.PageRouteInfo<void> {
-  const HomeRoute({List<_i11.PageRouteInfo>? children})
-      : super(
+class HomeRoute extends _i11.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    _i12.Key? key,
+    required _i13.UpcomingEventCubit upcomingEventCubit,
+    List<_i11.PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(
+            key: key,
+            upcomingEventCubit: upcomingEventCubit,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i11.PageInfo<HomeRouteArgs> page =
+      _i11.PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({
+    this.key,
+    required this.upcomingEventCubit,
+  });
+
+  final _i12.Key? key;
+
+  final _i13.UpcomingEventCubit upcomingEventCubit;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key, upcomingEventCubit: $upcomingEventCubit}';
+  }
 }
 
 /// generated route for
@@ -202,16 +264,40 @@ class MainRoute extends _i11.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.MyEventPage]
-class MyEventRoute extends _i11.PageRouteInfo<void> {
-  const MyEventRoute({List<_i11.PageRouteInfo>? children})
-      : super(
+class MyEventRoute extends _i11.PageRouteInfo<MyEventRouteArgs> {
+  MyEventRoute({
+    _i12.Key? key,
+    required _i13.UpcomingEventCubit upcomingEventCubit,
+    List<_i11.PageRouteInfo>? children,
+  }) : super(
           MyEventRoute.name,
+          args: MyEventRouteArgs(
+            key: key,
+            upcomingEventCubit: upcomingEventCubit,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'MyEventRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static const _i11.PageInfo<MyEventRouteArgs> page =
+      _i11.PageInfo<MyEventRouteArgs>(name);
+}
+
+class MyEventRouteArgs {
+  const MyEventRouteArgs({
+    this.key,
+    required this.upcomingEventCubit,
+  });
+
+  final _i12.Key? key;
+
+  final _i13.UpcomingEventCubit upcomingEventCubit;
+
+  @override
+  String toString() {
+    return 'MyEventRouteArgs{key: $key, upcomingEventCubit: $upcomingEventCubit}';
+  }
 }
 
 /// generated route for

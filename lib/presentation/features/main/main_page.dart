@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:gesbuk_user/presentation/commons/widgets/widgets.dart';
-import 'package:gesbuk_user/presentation/configs/routes/app_router.gr.dart';
+
+import '../../commons/widgets/widgets.dart';
+import '../../configs/routes/routes.dart';
+import '../home/cubit/upcoming_event_cubit.dart';
 
 @RoutePage(name: 'MainRoute')
 class MainPage extends StatelessWidget {
@@ -9,12 +11,14 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UpcomingEventCubit upcomingEventCubit = UpcomingEventCubit();
+
     return AutoTabsScaffold(
-      routes: const [
-        HomeRoute(),
-        MyEventRoute(),
-        PriceListRoute(),
-        ProfileRoute(),
+      routes: [
+        HomeRoute(upcomingEventCubit: upcomingEventCubit),
+        MyEventRoute(upcomingEventCubit: upcomingEventCubit),
+        const PriceListRoute(),
+        const ProfileRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) => GesbukBottomNavigationBar(
           onTap: tabsRouter.setActiveIndex,

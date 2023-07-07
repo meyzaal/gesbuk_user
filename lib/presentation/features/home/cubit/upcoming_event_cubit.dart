@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -28,8 +30,8 @@ class UpcomingEventCubit extends Cubit<UpcomingEventState> {
         return emit(const UpcomingEventState.loaded(
             status: UpcomingEventStatus.upcomingEventsEmpty));
       }
-      return emit(const UpcomingEventState.loaded(
-          status: UpcomingEventStatus.haveUpcomingEvents));
+      return emit(UpcomingEventState.loaded(
+          events: events, status: UpcomingEventStatus.haveUpcomingEvents));
     });
   }
 }
