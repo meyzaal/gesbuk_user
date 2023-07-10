@@ -53,7 +53,8 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         routeData: routeData,
         child: _i2.GuestListPage(
           key: args.key,
-          onGuestCheckin: args.onGuestCheckin,
+          eventId: args.eventId,
+          onGuestCheckIn: args.onGuestCheckIn,
         ),
       );
     },
@@ -163,13 +164,15 @@ class EventDetailRouteArgs {
 class GuestListRoute extends _i11.PageRouteInfo<GuestListRouteArgs> {
   GuestListRoute({
     _i12.Key? key,
-    required void Function(bool) onGuestCheckin,
+    required String eventId,
+    required void Function(bool) onGuestCheckIn,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           GuestListRoute.name,
           args: GuestListRouteArgs(
             key: key,
-            onGuestCheckin: onGuestCheckin,
+            eventId: eventId,
+            onGuestCheckIn: onGuestCheckIn,
           ),
           initialChildren: children,
         );
@@ -183,16 +186,19 @@ class GuestListRoute extends _i11.PageRouteInfo<GuestListRouteArgs> {
 class GuestListRouteArgs {
   const GuestListRouteArgs({
     this.key,
-    required this.onGuestCheckin,
+    required this.eventId,
+    required this.onGuestCheckIn,
   });
 
   final _i12.Key? key;
 
-  final void Function(bool) onGuestCheckin;
+  final String eventId;
+
+  final void Function(bool) onGuestCheckIn;
 
   @override
   String toString() {
-    return 'GuestListRouteArgs{key: $key, onGuestCheckin: $onGuestCheckin}';
+    return 'GuestListRouteArgs{key: $key, eventId: $eventId, onGuestCheckIn: $onGuestCheckIn}';
   }
 }
 

@@ -1,6 +1,10 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/models/event/event_model.dart';
+import '../../../configs/routes/routes.dart';
 
 class EventDetailActions extends StatelessWidget {
   final Event event;
@@ -27,7 +31,15 @@ class EventDetailActions extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                log(event.id);
+                context.router.push(
+                  GuestListRoute(
+                    eventId: event.id,
+                    onGuestCheckIn: (guestCheckIn) {},
+                  ),
+                );
+              },
               leading: const Icon(Icons.groups_rounded),
               title: const Text('Lihat daftar tamu'),
               trailing: const Icon(Icons.chevron_right_rounded),

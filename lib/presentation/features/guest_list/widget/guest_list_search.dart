@@ -1,33 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class GuestListSearch extends StatelessWidget {
-  const GuestListSearch({super.key});
+import '../bloc/guest_list_bloc.dart';
+
+class GuestListSearch extends StatefulWidget implements PreferredSizeWidget {
+  final String eventId;
+
+  const GuestListSearch({super.key, required this.eventId});
+
+  @override
+  State<GuestListSearch> createState() => _GuestListSearchState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(64.0);
+}
+
+class _GuestListSearchState extends State<GuestListSearch> {
+  final _inputController = TextEditingController();
+  bool _showCloseIcon = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _inputController.addListener(_onTyping);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          suffixIcon: IconButton(
-              constraints: const BoxConstraints(),
-              onPressed: () => FocusScope.of(context).unfocus(),
-              icon: const Icon(Icons.cancel_rounded)),
-          suffixIconConstraints:
-              const BoxConstraints(minHeight: 24.0, minWidth: 24.0),
-          prefixIcon: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
-            child: Icon(Icons.search_rounded),
-          ),
-          prefixIconConstraints:
-              const BoxConstraints(minHeight: 24.0, minWidth: 24.0),
-          isDense: true,
-          filled: true,
-          fillColor: Colors.grey.shade300,
-          contentPadding: const EdgeInsets.all(8.0),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.0),
-              borderSide:
-                  const BorderSide(style: BorderStyle.none, width: 0.0)),
-          hintText: "Cari tamu"),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: BlocBuilder<GuestListBloc, GuestListState>(
+        builder: (context, state) {
+          return TextField(
+            enabled: state is GuestListLoadedState,
+            controller: _inputController,
+            decoration: InputDecoration(
+                suffixIcon: _showCloseIcon
+                    ? IconButton(
+                        onPressed: _onCancelSearch,
+                        icon: const Icon(Icons.cancel_rounded))
+                    : null,
+                prefixIcon: const Icon(Icons.search_rounded),
+                isDense: true,
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                hintText: "Cari tamu"),
+          );
+        },
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _inputController
+      ..removeListener(_onTyping)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _onTyping() {
+    setState(() {
+      _showCloseIcon = _inputController.text != '';
+      context.read<GuestListBloc>().add(GuestListEvent.searchGuestEvent(
+          eventId: widget.eventId, keyword: _inputController.text));
+    });
+  }
+
+  void _onCancelSearch() {
+    final focusNode = FocusScope.of(context);
+    _inputController.clear();
+    if (focusNode.hasFocus) focusNode.unfocus();
   }
 }
