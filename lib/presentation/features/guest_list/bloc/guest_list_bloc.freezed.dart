@@ -16,23 +16,25 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GuestListEvent {
-  String get eventId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String eventId, bool isRefresh) getGuestListEvent,
     required TResult Function(String eventId, String? keyword) searchGuestEvent,
+    required TResult Function(String guestId) guestCheckInEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult? Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult? Function(String guestId)? guestCheckInEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult Function(String guestId)? guestCheckInEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,24 +42,23 @@ mixin _$GuestListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetGuestListEvent value) getGuestListEvent,
     required TResult Function(SearchGuestEvent value) searchGuestEvent,
+    required TResult Function(GuestCheckInEvent value) guestCheckInEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetGuestListEvent value)? getGuestListEvent,
     TResult? Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult? Function(GuestCheckInEvent value)? guestCheckInEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetGuestListEvent value)? getGuestListEvent,
     TResult Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult Function(GuestCheckInEvent value)? guestCheckInEvent,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $GuestListEventCopyWith<GuestListEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -66,8 +67,6 @@ abstract class $GuestListEventCopyWith<$Res> {
   factory $GuestListEventCopyWith(
           GuestListEvent value, $Res Function(GuestListEvent) then) =
       _$GuestListEventCopyWithImpl<$Res, GuestListEvent>;
-  @useResult
-  $Res call({String eventId});
 }
 
 /// @nodoc
@@ -79,28 +78,13 @@ class _$GuestListEventCopyWithImpl<$Res, $Val extends GuestListEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? eventId = null,
-  }) {
-    return _then(_value.copyWith(
-      eventId: null == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetGuestListEventCopyWith<$Res>
-    implements $GuestListEventCopyWith<$Res> {
+abstract class _$$GetGuestListEventCopyWith<$Res> {
   factory _$$GetGuestListEventCopyWith(
           _$GetGuestListEvent value, $Res Function(_$GetGuestListEvent) then) =
       __$$GetGuestListEventCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String eventId, bool isRefresh});
 }
@@ -171,6 +155,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String eventId, bool isRefresh) getGuestListEvent,
     required TResult Function(String eventId, String? keyword) searchGuestEvent,
+    required TResult Function(String guestId) guestCheckInEvent,
   }) {
     return getGuestListEvent(eventId, isRefresh);
   }
@@ -180,6 +165,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult? Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult? Function(String guestId)? guestCheckInEvent,
   }) {
     return getGuestListEvent?.call(eventId, isRefresh);
   }
@@ -189,6 +175,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult Function(String guestId)? guestCheckInEvent,
     required TResult orElse(),
   }) {
     if (getGuestListEvent != null) {
@@ -202,6 +189,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetGuestListEvent value) getGuestListEvent,
     required TResult Function(SearchGuestEvent value) searchGuestEvent,
+    required TResult Function(GuestCheckInEvent value) guestCheckInEvent,
   }) {
     return getGuestListEvent(this);
   }
@@ -211,6 +199,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetGuestListEvent value)? getGuestListEvent,
     TResult? Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult? Function(GuestCheckInEvent value)? guestCheckInEvent,
   }) {
     return getGuestListEvent?.call(this);
   }
@@ -220,6 +209,7 @@ class _$GetGuestListEvent implements GetGuestListEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetGuestListEvent value)? getGuestListEvent,
     TResult Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult Function(GuestCheckInEvent value)? guestCheckInEvent,
     required TResult orElse(),
   }) {
     if (getGuestListEvent != null) {
@@ -234,22 +224,18 @@ abstract class GetGuestListEvent implements GuestListEvent {
       {required final String eventId,
       required final bool isRefresh}) = _$GetGuestListEvent;
 
-  @override
   String get eventId;
   bool get isRefresh;
-  @override
   @JsonKey(ignore: true)
   _$$GetGuestListEventCopyWith<_$GetGuestListEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SearchGuestEventCopyWith<$Res>
-    implements $GuestListEventCopyWith<$Res> {
+abstract class _$$SearchGuestEventCopyWith<$Res> {
   factory _$$SearchGuestEventCopyWith(
           _$SearchGuestEvent value, $Res Function(_$SearchGuestEvent) then) =
       __$$SearchGuestEventCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String eventId, String? keyword});
 }
@@ -319,6 +305,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String eventId, bool isRefresh) getGuestListEvent,
     required TResult Function(String eventId, String? keyword) searchGuestEvent,
+    required TResult Function(String guestId) guestCheckInEvent,
   }) {
     return searchGuestEvent(eventId, keyword);
   }
@@ -328,6 +315,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult? Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult? Function(String guestId)? guestCheckInEvent,
   }) {
     return searchGuestEvent?.call(eventId, keyword);
   }
@@ -337,6 +325,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String eventId, bool isRefresh)? getGuestListEvent,
     TResult Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult Function(String guestId)? guestCheckInEvent,
     required TResult orElse(),
   }) {
     if (searchGuestEvent != null) {
@@ -350,6 +339,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetGuestListEvent value) getGuestListEvent,
     required TResult Function(SearchGuestEvent value) searchGuestEvent,
+    required TResult Function(GuestCheckInEvent value) guestCheckInEvent,
   }) {
     return searchGuestEvent(this);
   }
@@ -359,6 +349,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetGuestListEvent value)? getGuestListEvent,
     TResult? Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult? Function(GuestCheckInEvent value)? guestCheckInEvent,
   }) {
     return searchGuestEvent?.call(this);
   }
@@ -368,6 +359,7 @@ class _$SearchGuestEvent implements SearchGuestEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetGuestListEvent value)? getGuestListEvent,
     TResult Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult Function(GuestCheckInEvent value)? guestCheckInEvent,
     required TResult orElse(),
   }) {
     if (searchGuestEvent != null) {
@@ -382,12 +374,150 @@ abstract class SearchGuestEvent implements GuestListEvent {
       {required final String eventId,
       final String? keyword}) = _$SearchGuestEvent;
 
-  @override
   String get eventId;
   String? get keyword;
-  @override
   @JsonKey(ignore: true)
   _$$SearchGuestEventCopyWith<_$SearchGuestEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GuestCheckInEventCopyWith<$Res> {
+  factory _$$GuestCheckInEventCopyWith(
+          _$GuestCheckInEvent value, $Res Function(_$GuestCheckInEvent) then) =
+      __$$GuestCheckInEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String guestId});
+}
+
+/// @nodoc
+class __$$GuestCheckInEventCopyWithImpl<$Res>
+    extends _$GuestListEventCopyWithImpl<$Res, _$GuestCheckInEvent>
+    implements _$$GuestCheckInEventCopyWith<$Res> {
+  __$$GuestCheckInEventCopyWithImpl(
+      _$GuestCheckInEvent _value, $Res Function(_$GuestCheckInEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? guestId = null,
+  }) {
+    return _then(_$GuestCheckInEvent(
+      guestId: null == guestId
+          ? _value.guestId
+          : guestId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GuestCheckInEvent implements GuestCheckInEvent {
+  const _$GuestCheckInEvent({required this.guestId});
+
+  @override
+  final String guestId;
+
+  @override
+  String toString() {
+    return 'GuestListEvent.guestCheckInEvent(guestId: $guestId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GuestCheckInEvent &&
+            (identical(other.guestId, guestId) || other.guestId == guestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, guestId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GuestCheckInEventCopyWith<_$GuestCheckInEvent> get copyWith =>
+      __$$GuestCheckInEventCopyWithImpl<_$GuestCheckInEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String eventId, bool isRefresh) getGuestListEvent,
+    required TResult Function(String eventId, String? keyword) searchGuestEvent,
+    required TResult Function(String guestId) guestCheckInEvent,
+  }) {
+    return guestCheckInEvent(guestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String eventId, bool isRefresh)? getGuestListEvent,
+    TResult? Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult? Function(String guestId)? guestCheckInEvent,
+  }) {
+    return guestCheckInEvent?.call(guestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String eventId, bool isRefresh)? getGuestListEvent,
+    TResult Function(String eventId, String? keyword)? searchGuestEvent,
+    TResult Function(String guestId)? guestCheckInEvent,
+    required TResult orElse(),
+  }) {
+    if (guestCheckInEvent != null) {
+      return guestCheckInEvent(guestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetGuestListEvent value) getGuestListEvent,
+    required TResult Function(SearchGuestEvent value) searchGuestEvent,
+    required TResult Function(GuestCheckInEvent value) guestCheckInEvent,
+  }) {
+    return guestCheckInEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetGuestListEvent value)? getGuestListEvent,
+    TResult? Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult? Function(GuestCheckInEvent value)? guestCheckInEvent,
+  }) {
+    return guestCheckInEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetGuestListEvent value)? getGuestListEvent,
+    TResult Function(SearchGuestEvent value)? searchGuestEvent,
+    TResult Function(GuestCheckInEvent value)? guestCheckInEvent,
+    required TResult orElse(),
+  }) {
+    if (guestCheckInEvent != null) {
+      return guestCheckInEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GuestCheckInEvent implements GuestListEvent {
+  const factory GuestCheckInEvent({required final String guestId}) =
+      _$GuestCheckInEvent;
+
+  String get guestId;
+  @JsonKey(ignore: true)
+  _$$GuestCheckInEventCopyWith<_$GuestCheckInEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -398,51 +528,112 @@ mixin _$GuestListState {
   dynamic get hasReachMax => throw _privateConstructorUsedError;
   dynamic get searchMode => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  GuestCheckInStatus get checkInStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         initial,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loading,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         error,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -489,7 +680,8 @@ abstract class $GuestListStateCopyWith<$Res> {
       List<Guest> searchResults,
       dynamic hasReachMax,
       dynamic searchMode,
-      String errorMessage});
+      String errorMessage,
+      GuestCheckInStatus checkInStatus});
 }
 
 /// @nodoc
@@ -510,6 +702,7 @@ class _$GuestListStateCopyWithImpl<$Res, $Val extends GuestListState>
     Object? hasReachMax = freezed,
     Object? searchMode = freezed,
     Object? errorMessage = null,
+    Object? checkInStatus = null,
   }) {
     return _then(_value.copyWith(
       guests: null == guests
@@ -532,6 +725,10 @@ class _$GuestListStateCopyWithImpl<$Res, $Val extends GuestListState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      checkInStatus: null == checkInStatus
+          ? _value.checkInStatus
+          : checkInStatus // ignore: cast_nullable_to_non_nullable
+              as GuestCheckInStatus,
     ) as $Val);
   }
 }
@@ -549,7 +746,8 @@ abstract class _$$GuestInitialStateCopyWith<$Res>
       List<Guest> searchResults,
       dynamic hasReachMax,
       dynamic searchMode,
-      String errorMessage});
+      String errorMessage,
+      GuestCheckInStatus checkInStatus});
 }
 
 /// @nodoc
@@ -568,6 +766,7 @@ class __$$GuestInitialStateCopyWithImpl<$Res>
     Object? hasReachMax = freezed,
     Object? searchMode = freezed,
     Object? errorMessage = null,
+    Object? checkInStatus = null,
   }) {
     return _then(_$GuestInitialState(
       guests: null == guests
@@ -584,6 +783,10 @@ class __$$GuestInitialStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      checkInStatus: null == checkInStatus
+          ? _value.checkInStatus
+          : checkInStatus // ignore: cast_nullable_to_non_nullable
+              as GuestCheckInStatus,
     ));
   }
 }
@@ -596,7 +799,8 @@ class _$GuestInitialState implements GuestInitialState {
       final List<Guest> searchResults = const [],
       this.hasReachMax = false,
       this.searchMode = false,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.checkInStatus = GuestCheckInStatus.initial})
       : _guests = guests,
         _searchResults = searchResults;
 
@@ -627,10 +831,13 @@ class _$GuestInitialState implements GuestInitialState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final GuestCheckInStatus checkInStatus;
 
   @override
   String toString() {
-    return 'GuestListState.initial(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage)';
+    return 'GuestListState.initial(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage, checkInStatus: $checkInStatus)';
   }
 
   @override
@@ -646,7 +853,9 @@ class _$GuestInitialState implements GuestInitialState {
             const DeepCollectionEquality()
                 .equals(other.searchMode, searchMode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.checkInStatus, checkInStatus) ||
+                other.checkInStatus == checkInStatus));
   }
 
   @override
@@ -656,7 +865,8 @@ class _$GuestInitialState implements GuestInitialState {
       const DeepCollectionEquality().hash(_searchResults),
       const DeepCollectionEquality().hash(hasReachMax),
       const DeepCollectionEquality().hash(searchMode),
-      errorMessage);
+      errorMessage,
+      checkInStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -667,63 +877,123 @@ class _$GuestInitialState implements GuestInitialState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         initial,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loading,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         error,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loaded,
   }) {
-    return initial(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return initial(guests, searchResults, hasReachMax, searchMode, errorMessage,
+        checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
   }) {
-    return initial?.call(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return initial?.call(guests, searchResults, hasReachMax, searchMode,
+        errorMessage, checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(
-          guests, searchResults, hasReachMax, searchMode, errorMessage);
+      return initial(guests, searchResults, hasReachMax, searchMode,
+          errorMessage, checkInStatus);
     }
     return orElse();
   }
@@ -772,7 +1042,8 @@ abstract class GuestInitialState implements GuestListState {
       final List<Guest> searchResults,
       final dynamic hasReachMax,
       final dynamic searchMode,
-      final String errorMessage}) = _$GuestInitialState;
+      final String errorMessage,
+      final GuestCheckInStatus checkInStatus}) = _$GuestInitialState;
 
   @override
   List<Guest> get guests;
@@ -784,6 +1055,8 @@ abstract class GuestInitialState implements GuestListState {
   dynamic get searchMode;
   @override
   String get errorMessage;
+  @override
+  GuestCheckInStatus get checkInStatus;
   @override
   @JsonKey(ignore: true)
   _$$GuestInitialStateCopyWith<_$GuestInitialState> get copyWith =>
@@ -803,7 +1076,8 @@ abstract class _$$GuestListLoadingStateCopyWith<$Res>
       List<Guest> searchResults,
       dynamic hasReachMax,
       dynamic searchMode,
-      String errorMessage});
+      String errorMessage,
+      GuestCheckInStatus checkInStatus});
 }
 
 /// @nodoc
@@ -822,6 +1096,7 @@ class __$$GuestListLoadingStateCopyWithImpl<$Res>
     Object? hasReachMax = freezed,
     Object? searchMode = freezed,
     Object? errorMessage = null,
+    Object? checkInStatus = null,
   }) {
     return _then(_$GuestListLoadingState(
       guests: null == guests
@@ -838,6 +1113,10 @@ class __$$GuestListLoadingStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      checkInStatus: null == checkInStatus
+          ? _value.checkInStatus
+          : checkInStatus // ignore: cast_nullable_to_non_nullable
+              as GuestCheckInStatus,
     ));
   }
 }
@@ -850,7 +1129,8 @@ class _$GuestListLoadingState implements GuestListLoadingState {
       final List<Guest> searchResults = const [],
       this.hasReachMax = false,
       this.searchMode = false,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.checkInStatus = GuestCheckInStatus.initial})
       : _guests = guests,
         _searchResults = searchResults;
 
@@ -881,10 +1161,13 @@ class _$GuestListLoadingState implements GuestListLoadingState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final GuestCheckInStatus checkInStatus;
 
   @override
   String toString() {
-    return 'GuestListState.loading(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage)';
+    return 'GuestListState.loading(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage, checkInStatus: $checkInStatus)';
   }
 
   @override
@@ -900,7 +1183,9 @@ class _$GuestListLoadingState implements GuestListLoadingState {
             const DeepCollectionEquality()
                 .equals(other.searchMode, searchMode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.checkInStatus, checkInStatus) ||
+                other.checkInStatus == checkInStatus));
   }
 
   @override
@@ -910,7 +1195,8 @@ class _$GuestListLoadingState implements GuestListLoadingState {
       const DeepCollectionEquality().hash(_searchResults),
       const DeepCollectionEquality().hash(hasReachMax),
       const DeepCollectionEquality().hash(searchMode),
-      errorMessage);
+      errorMessage,
+      checkInStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -922,63 +1208,123 @@ class _$GuestListLoadingState implements GuestListLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         initial,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loading,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         error,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loaded,
   }) {
-    return loading(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return loading(guests, searchResults, hasReachMax, searchMode, errorMessage,
+        checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
   }) {
-    return loading?.call(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return loading?.call(guests, searchResults, hasReachMax, searchMode,
+        errorMessage, checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(
-          guests, searchResults, hasReachMax, searchMode, errorMessage);
+      return loading(guests, searchResults, hasReachMax, searchMode,
+          errorMessage, checkInStatus);
     }
     return orElse();
   }
@@ -1027,7 +1373,8 @@ abstract class GuestListLoadingState implements GuestListState {
       final List<Guest> searchResults,
       final dynamic hasReachMax,
       final dynamic searchMode,
-      final String errorMessage}) = _$GuestListLoadingState;
+      final String errorMessage,
+      final GuestCheckInStatus checkInStatus}) = _$GuestListLoadingState;
 
   @override
   List<Guest> get guests;
@@ -1039,6 +1386,8 @@ abstract class GuestListLoadingState implements GuestListState {
   dynamic get searchMode;
   @override
   String get errorMessage;
+  @override
+  GuestCheckInStatus get checkInStatus;
   @override
   @JsonKey(ignore: true)
   _$$GuestListLoadingStateCopyWith<_$GuestListLoadingState> get copyWith =>
@@ -1058,7 +1407,8 @@ abstract class _$$GuestListErrorStateCopyWith<$Res>
       List<Guest> searchResults,
       dynamic hasReachMax,
       dynamic searchMode,
-      String errorMessage});
+      String errorMessage,
+      GuestCheckInStatus checkInStatus});
 }
 
 /// @nodoc
@@ -1077,6 +1427,7 @@ class __$$GuestListErrorStateCopyWithImpl<$Res>
     Object? hasReachMax = freezed,
     Object? searchMode = freezed,
     Object? errorMessage = null,
+    Object? checkInStatus = null,
   }) {
     return _then(_$GuestListErrorState(
       guests: null == guests
@@ -1093,6 +1444,10 @@ class __$$GuestListErrorStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      checkInStatus: null == checkInStatus
+          ? _value.checkInStatus
+          : checkInStatus // ignore: cast_nullable_to_non_nullable
+              as GuestCheckInStatus,
     ));
   }
 }
@@ -1105,7 +1460,8 @@ class _$GuestListErrorState implements GuestListErrorState {
       final List<Guest> searchResults = const [],
       this.hasReachMax = false,
       this.searchMode = false,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.checkInStatus = GuestCheckInStatus.initial})
       : _guests = guests,
         _searchResults = searchResults;
 
@@ -1136,10 +1492,13 @@ class _$GuestListErrorState implements GuestListErrorState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final GuestCheckInStatus checkInStatus;
 
   @override
   String toString() {
-    return 'GuestListState.error(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage)';
+    return 'GuestListState.error(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage, checkInStatus: $checkInStatus)';
   }
 
   @override
@@ -1155,7 +1514,9 @@ class _$GuestListErrorState implements GuestListErrorState {
             const DeepCollectionEquality()
                 .equals(other.searchMode, searchMode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.checkInStatus, checkInStatus) ||
+                other.checkInStatus == checkInStatus));
   }
 
   @override
@@ -1165,7 +1526,8 @@ class _$GuestListErrorState implements GuestListErrorState {
       const DeepCollectionEquality().hash(_searchResults),
       const DeepCollectionEquality().hash(hasReachMax),
       const DeepCollectionEquality().hash(searchMode),
-      errorMessage);
+      errorMessage,
+      checkInStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -1177,62 +1539,123 @@ class _$GuestListErrorState implements GuestListErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         initial,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loading,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         error,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loaded,
   }) {
-    return error(guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return error(guests, searchResults, hasReachMax, searchMode, errorMessage,
+        checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
   }) {
-    return error?.call(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return error?.call(guests, searchResults, hasReachMax, searchMode,
+        errorMessage, checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(
-          guests, searchResults, hasReachMax, searchMode, errorMessage);
+      return error(guests, searchResults, hasReachMax, searchMode, errorMessage,
+          checkInStatus);
     }
     return orElse();
   }
@@ -1281,7 +1704,8 @@ abstract class GuestListErrorState implements GuestListState {
       final List<Guest> searchResults,
       final dynamic hasReachMax,
       final dynamic searchMode,
-      final String errorMessage}) = _$GuestListErrorState;
+      final String errorMessage,
+      final GuestCheckInStatus checkInStatus}) = _$GuestListErrorState;
 
   @override
   List<Guest> get guests;
@@ -1293,6 +1717,8 @@ abstract class GuestListErrorState implements GuestListState {
   dynamic get searchMode;
   @override
   String get errorMessage;
+  @override
+  GuestCheckInStatus get checkInStatus;
   @override
   @JsonKey(ignore: true)
   _$$GuestListErrorStateCopyWith<_$GuestListErrorState> get copyWith =>
@@ -1312,7 +1738,8 @@ abstract class _$$GuestListLoadedStateCopyWith<$Res>
       List<Guest> searchResults,
       dynamic hasReachMax,
       dynamic searchMode,
-      String errorMessage});
+      String errorMessage,
+      GuestCheckInStatus checkInStatus});
 }
 
 /// @nodoc
@@ -1331,6 +1758,7 @@ class __$$GuestListLoadedStateCopyWithImpl<$Res>
     Object? hasReachMax = freezed,
     Object? searchMode = freezed,
     Object? errorMessage = null,
+    Object? checkInStatus = null,
   }) {
     return _then(_$GuestListLoadedState(
       guests: null == guests
@@ -1347,6 +1775,10 @@ class __$$GuestListLoadedStateCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      checkInStatus: null == checkInStatus
+          ? _value.checkInStatus
+          : checkInStatus // ignore: cast_nullable_to_non_nullable
+              as GuestCheckInStatus,
     ));
   }
 }
@@ -1359,7 +1791,8 @@ class _$GuestListLoadedState implements GuestListLoadedState {
       final List<Guest> searchResults = const [],
       this.hasReachMax = false,
       this.searchMode = false,
-      this.errorMessage = ''})
+      this.errorMessage = '',
+      this.checkInStatus = GuestCheckInStatus.initial})
       : _guests = guests,
         _searchResults = searchResults;
 
@@ -1390,10 +1823,13 @@ class _$GuestListLoadedState implements GuestListLoadedState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final GuestCheckInStatus checkInStatus;
 
   @override
   String toString() {
-    return 'GuestListState.loaded(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage)';
+    return 'GuestListState.loaded(guests: $guests, searchResults: $searchResults, hasReachMax: $hasReachMax, searchMode: $searchMode, errorMessage: $errorMessage, checkInStatus: $checkInStatus)';
   }
 
   @override
@@ -1409,7 +1845,9 @@ class _$GuestListLoadedState implements GuestListLoadedState {
             const DeepCollectionEquality()
                 .equals(other.searchMode, searchMode) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.checkInStatus, checkInStatus) ||
+                other.checkInStatus == checkInStatus));
   }
 
   @override
@@ -1419,7 +1857,8 @@ class _$GuestListLoadedState implements GuestListLoadedState {
       const DeepCollectionEquality().hash(_searchResults),
       const DeepCollectionEquality().hash(hasReachMax),
       const DeepCollectionEquality().hash(searchMode),
-      errorMessage);
+      errorMessage,
+      checkInStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -1431,62 +1870,123 @@ class _$GuestListLoadedState implements GuestListLoadedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         initial,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loading,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         error,
-    required TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)
+    required TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)
         loaded,
   }) {
-    return loaded(guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return loaded(guests, searchResults, hasReachMax, searchMode, errorMessage,
+        checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult? Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult? Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
   }) {
-    return loaded?.call(
-        guests, searchResults, hasReachMax, searchMode, errorMessage);
+    return loaded?.call(guests, searchResults, hasReachMax, searchMode,
+        errorMessage, checkInStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         initial,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loading,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         error,
-    TResult Function(List<Guest> guests, List<Guest> searchResults,
-            dynamic hasReachMax, dynamic searchMode, String errorMessage)?
+    TResult Function(
+            List<Guest> guests,
+            List<Guest> searchResults,
+            dynamic hasReachMax,
+            dynamic searchMode,
+            String errorMessage,
+            GuestCheckInStatus checkInStatus)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(
-          guests, searchResults, hasReachMax, searchMode, errorMessage);
+      return loaded(guests, searchResults, hasReachMax, searchMode,
+          errorMessage, checkInStatus);
     }
     return orElse();
   }
@@ -1535,7 +2035,8 @@ abstract class GuestListLoadedState implements GuestListState {
       final List<Guest> searchResults,
       final dynamic hasReachMax,
       final dynamic searchMode,
-      final String errorMessage}) = _$GuestListLoadedState;
+      final String errorMessage,
+      final GuestCheckInStatus checkInStatus}) = _$GuestListLoadedState;
 
   @override
   List<Guest> get guests;
@@ -1547,6 +2048,8 @@ abstract class GuestListLoadedState implements GuestListState {
   dynamic get searchMode;
   @override
   String get errorMessage;
+  @override
+  GuestCheckInStatus get checkInStatus;
   @override
   @JsonKey(ignore: true)
   _$$GuestListLoadedStateCopyWith<_$GuestListLoadedState> get copyWith =>

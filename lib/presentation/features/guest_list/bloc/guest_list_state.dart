@@ -8,6 +8,7 @@ class GuestListState with _$GuestListState {
     @Default(false) hasReachMax,
     @Default(false) searchMode,
     @Default('') String errorMessage,
+    @Default(GuestCheckInStatus.initial) GuestCheckInStatus checkInStatus,
   }) = GuestInitialState;
 
   const factory GuestListState.loading({
@@ -16,6 +17,7 @@ class GuestListState with _$GuestListState {
     @Default(false) hasReachMax,
     @Default(false) searchMode,
     @Default('') String errorMessage,
+    @Default(GuestCheckInStatus.initial) GuestCheckInStatus checkInStatus,
   }) = GuestListLoadingState;
 
   const factory GuestListState.error({
@@ -24,6 +26,7 @@ class GuestListState with _$GuestListState {
     @Default(false) hasReachMax,
     @Default(false) searchMode,
     @Default('') String errorMessage,
+    @Default(GuestCheckInStatus.initial) GuestCheckInStatus checkInStatus,
   }) = GuestListErrorState;
 
   const factory GuestListState.loaded({
@@ -32,5 +35,6 @@ class GuestListState with _$GuestListState {
     @Default(false) hasReachMax,
     @Default(false) searchMode,
     @Default('') String errorMessage,
+    @Default(GuestCheckInStatus.initial) GuestCheckInStatus checkInStatus,
   }) = GuestListLoadedState;
 }

@@ -11,4 +11,8 @@ class GuestListEvent with _$GuestListEvent {
     required String eventId,
     String? keyword,
   }) = SearchGuestEvent;
+
+  const factory GuestListEvent.guestCheckInEvent({
+    required String guestId,
+  }) = GuestCheckInEvent;
 }

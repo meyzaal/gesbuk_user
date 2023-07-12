@@ -9,11 +9,14 @@ import '../widget/event_detail_info.dart';
 import '../widget/event_detail_report.dart';
 
 class EventDetailView extends StatelessWidget {
-  const EventDetailView({super.key});
+  EventDetailView({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: BlocBuilder<EventDetailBloc, EventDetailState>(
         builder: (context, state) {
           final eventId =
@@ -49,7 +52,10 @@ class EventDetailView extends StatelessWidget {
                   EventDetailAppBar(event: state.event),
                   EventDetailInfo(event: state.event),
                   EventDetailReport(event: state.event),
-                  EventDetailActions(event: state.event)
+                  EventDetailActions(
+                    event: state.event,
+                    scaffoldKey: _scaffoldKey,
+                  )
                 ],
               ),
             );

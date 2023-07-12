@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../commons/helpers/helpers.dart';
+import '../bloc/guest_list_bloc.dart';
 
 class GuestListExpansionBody extends StatelessWidget {
   final String address;
-  final bool isCheckIn;
+  final String guestId;
+  final String checkInTime;
 
   const GuestListExpansionBody({
     super.key,
     required this.address,
-    required this.isCheckIn,
+    required this.guestId,
+    required this.checkInTime,
   });
 
   @override
   Widget build(BuildContext context) {
+    bool isCheckIn = checkInTime != '';
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
@@ -24,7 +30,8 @@ class GuestListExpansionBody extends StatelessWidget {
           const Divider(indent: 16.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: isCheckIn ? const _CheckInTime() : const _CheckInButton(),
+            child:
+                isCheckIn ? _CheckInTime(checkInTime) : _CheckInButton(guestId),
           ),
         ],
       ),
@@ -84,20 +91,46 @@ class GuestListExpansionBody extends StatelessWidget {
 }
 
 class _CheckInButton extends StatelessWidget {
-  const _CheckInButton();
+  final String guestId;
+
+  const _CheckInButton(this.guestId);
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: () {}, child: const Text('Check-in'));
+    return BlocBuilder<GuestListBloc, GuestListState>(
+      builder: (context, state) {
+        return ElevatedButton(
+            onPressed: () {
+              state.checkInStatus == GuestCheckInStatus.loading
+                  ? null
+                  : _checkIn(context);
+            },
+            child: state.checkInStatus == GuestCheckInStatus.loading
+                ? const SizedBox.square(
+                    dimension: 16.0,
+                    child: CircularProgressIndicator.adaptive())
+                : const Text('Check-in'));
+      },
+    );
+  }
+
+  void _checkIn(BuildContext context) {
+    final focusNode = FocusScope.of(context);
+    if (focusNode.hasFocus) focusNode.unfocus();
+    context
+        .read<GuestListBloc>()
+        .add(GuestListEvent.guestCheckInEvent(guestId: guestId));
   }
 }
 
 class _CheckInTime extends StatelessWidget {
-  const _CheckInTime({super.key});
+  final String checkInTime;
+
+  const _CheckInTime(this.checkInTime);
 
   @override
   Widget build(BuildContext context) {
-    final checkInHelper = CheckInHelper.initialize('2023-10-05T14:48:00.000Z');
+    final checkInHelper = CheckInHelper.initialize(checkInTime);
 
     String parsedDate = checkInHelper.parsedDate;
     String parsedTime = checkInHelper.parsedTime;

@@ -24,6 +24,8 @@ class MyEventView extends StatelessWidget {
       ),
       body: BlocBuilder<MyEventBloc, MyEventState>(
         builder: (context, state) {
+          print(state);
+
           if (state is MyEventErrorState) {
             return GesbukErrorWidget(
               isConnectionTimeout:

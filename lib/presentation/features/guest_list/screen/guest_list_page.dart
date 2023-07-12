@@ -19,7 +19,7 @@ class GuestListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => GuestListBloc()
+      create: (context) => GuestListBloc(onGuestCheckIn)
         ..add(GuestListEvent.getGuestListEvent(
           eventId: eventId,
           isRefresh: false,

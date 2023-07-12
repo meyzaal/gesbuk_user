@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -77,6 +79,7 @@ class EventRemoteDataSourceImpl extends EventRemoteDataSource {
       return const Left(
           ConnectionFailure('Terjadi masalah saat menghubungkan ke server'));
     } catch (e) {
+      log(e.toString());
       return const Left(ParsingFailure('Tidak dapat memparsing respon'));
     }
   }

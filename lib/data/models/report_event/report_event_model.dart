@@ -11,7 +11,7 @@ class ReportEvent with _$ReportEvent {
     @JsonKey(name: '_id') @Default('') String id,
     @Default(0) int guestPresent,
     @Default(0) int guestAbsent,
-    @Default(0) int percentage,
+    @Default(0) double percentage,
     @Default('-') String eventId,
   }) = _ReportEvent;
 

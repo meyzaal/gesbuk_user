@@ -11,7 +11,7 @@ _$_ReportEvent _$$_ReportEventFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String? ?? '',
       guestPresent: json['guestPresent'] as int? ?? 0,
       guestAbsent: json['guestAbsent'] as int? ?? 0,
-      percentage: json['percentage'] as int? ?? 0,
+      percentage: (json['percentage'] as num?)?.toDouble() ?? 0,
       eventId: json['eventId'] as String? ?? '-',
     );
 

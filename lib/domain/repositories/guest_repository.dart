@@ -11,4 +11,5 @@ abstract class GuestRepository {
     int limit = 20,
     String? keyword,
   });
+  Future<Either<Failure, Guest>> guestCheckIn(String guestId);
 }

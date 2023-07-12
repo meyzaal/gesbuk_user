@@ -31,7 +31,7 @@ mixin _$Event {
   String get eventType => throw _privateConstructorUsedError;
   int get guestCount => throw _privateConstructorUsedError;
   GesbukUser get user => throw _privateConstructorUsedError;
-  ReportEvent get eventReport => throw _privateConstructorUsedError;
+  ReportEvent get reportEvent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,10 +54,10 @@ abstract class $EventCopyWith<$Res> {
       String eventType,
       int guestCount,
       GesbukUser user,
-      ReportEvent eventReport});
+      ReportEvent reportEvent});
 
   $GesbukUserCopyWith<$Res> get user;
-  $ReportEventCopyWith<$Res> get eventReport;
+  $ReportEventCopyWith<$Res> get reportEvent;
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
     Object? eventType = null,
     Object? guestCount = null,
     Object? user = null,
-    Object? eventReport = null,
+    Object? reportEvent = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -126,9 +126,9 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as GesbukUser,
-      eventReport: null == eventReport
-          ? _value.eventReport
-          : eventReport // ignore: cast_nullable_to_non_nullable
+      reportEvent: null == reportEvent
+          ? _value.reportEvent
+          : reportEvent // ignore: cast_nullable_to_non_nullable
               as ReportEvent,
     ) as $Val);
   }
@@ -143,9 +143,9 @@ class _$EventCopyWithImpl<$Res, $Val extends Event>
 
   @override
   @pragma('vm:prefer-inline')
-  $ReportEventCopyWith<$Res> get eventReport {
-    return $ReportEventCopyWith<$Res>(_value.eventReport, (value) {
-      return _then(_value.copyWith(eventReport: value) as $Val);
+  $ReportEventCopyWith<$Res> get reportEvent {
+    return $ReportEventCopyWith<$Res>(_value.reportEvent, (value) {
+      return _then(_value.copyWith(reportEvent: value) as $Val);
     });
   }
 }
@@ -167,12 +167,12 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       String eventType,
       int guestCount,
       GesbukUser user,
-      ReportEvent eventReport});
+      ReportEvent reportEvent});
 
   @override
   $GesbukUserCopyWith<$Res> get user;
   @override
-  $ReportEventCopyWith<$Res> get eventReport;
+  $ReportEventCopyWith<$Res> get reportEvent;
 }
 
 /// @nodoc
@@ -194,7 +194,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
     Object? eventType = null,
     Object? guestCount = null,
     Object? user = null,
-    Object? eventReport = null,
+    Object? reportEvent = null,
   }) {
     return _then(_$_Event(
       id: null == id
@@ -237,9 +237,9 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res, _$_Event>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as GesbukUser,
-      eventReport: null == eventReport
-          ? _value.eventReport
-          : eventReport // ignore: cast_nullable_to_non_nullable
+      reportEvent: null == reportEvent
+          ? _value.reportEvent
+          : reportEvent // ignore: cast_nullable_to_non_nullable
               as ReportEvent,
     ));
   }
@@ -259,7 +259,7 @@ class _$_Event implements _Event {
       this.eventType = '-',
       this.guestCount = 0,
       this.user = const GesbukUser(),
-      this.eventReport = const ReportEvent()});
+      this.reportEvent = const ReportEvent()});
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
       _$$_EventFromJson(json);
@@ -296,11 +296,11 @@ class _$_Event implements _Event {
   final GesbukUser user;
   @override
   @JsonKey()
-  final ReportEvent eventReport;
+  final ReportEvent reportEvent;
 
   @override
   String toString() {
-    return 'Event(id: $id, name: $name, imageUrl: $imageUrl, location: $location, startDate: $startDate, key: $key, isEnrolled: $isEnrolled, eventType: $eventType, guestCount: $guestCount, user: $user, eventReport: $eventReport)';
+    return 'Event(id: $id, name: $name, imageUrl: $imageUrl, location: $location, startDate: $startDate, key: $key, isEnrolled: $isEnrolled, eventType: $eventType, guestCount: $guestCount, user: $user, reportEvent: $reportEvent)';
   }
 
   @override
@@ -324,14 +324,14 @@ class _$_Event implements _Event {
             (identical(other.guestCount, guestCount) ||
                 other.guestCount == guestCount) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.eventReport, eventReport) ||
-                other.eventReport == eventReport));
+            (identical(other.reportEvent, reportEvent) ||
+                other.reportEvent == reportEvent));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, imageUrl, location,
-      startDate, key, isEnrolled, eventType, guestCount, user, eventReport);
+      startDate, key, isEnrolled, eventType, guestCount, user, reportEvent);
 
   @JsonKey(ignore: true)
   @override
@@ -359,7 +359,7 @@ abstract class _Event implements Event {
       final String eventType,
       final int guestCount,
       final GesbukUser user,
-      final ReportEvent eventReport}) = _$_Event;
+      final ReportEvent reportEvent}) = _$_Event;
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
@@ -385,7 +385,7 @@ abstract class _Event implements Event {
   @override
   GesbukUser get user;
   @override
-  ReportEvent get eventReport;
+  ReportEvent get reportEvent;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>

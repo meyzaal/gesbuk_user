@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../commons/helpers/helpers.dart';
 import '../../../commons/widgets/widgets.dart';
 import '../bloc/guest_list_bloc.dart';
 import 'guest_list_expansion_body.dart';
@@ -28,14 +29,25 @@ class _GuestListGuestsState extends State<GuestListGuests> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GuestListBloc, GuestListState>(
-        builder: (context, state) {
+    return BlocConsumer<GuestListBloc, GuestListState>(
+        listener: (context, state) {
+      if (state.checkInStatus == GuestCheckInStatus.success) {
+        SnackBarHelper.of(context).showSnackBar(
+            content: 'Berhasil check-in!', type: SnackBarType.success);
+      }
+
+      if (state.checkInStatus == GuestCheckInStatus.error) {
+        SnackBarHelper.of(context).showSnackBar(
+            content: state.errorMessage, type: SnackBarType.error);
+      }
+    }, builder: (context, state) {
       final guests = state.searchMode ? state.searchResults : state.guests;
 
       return SingleChildScrollView(
           controller: _scrollController,
           physics: const BouncingScrollPhysics(),
           child: ExpansionPanelList.radio(
+              key: ValueKey(guests.length),
               elevation: 0.0,
               children: List.generate(guests.length, (index) {
                 final guest = guests[index];
@@ -49,7 +61,10 @@ class _GuestListGuestsState extends State<GuestListGuests> {
                     withBadge: isCheckIn,
                   ),
                   body: GuestListExpansionBody(
-                      address: guest.address, isCheckIn: isCheckIn),
+                    address: guest.address,
+                    guestId: guest.id,
+                    checkInTime: guest.checkInTime,
+                  ),
                   value: '$index',
                 );
               })));

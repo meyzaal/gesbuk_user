@@ -19,7 +19,7 @@ class EventDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           EventDetailBloc()..add(EventDetailEvent.getEventDetailEvent(eventId)),
-      child: const EventDetailView(),
+      child:  EventDetailView(),
     );
   }
 }

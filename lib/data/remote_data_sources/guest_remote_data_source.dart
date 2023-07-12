@@ -15,7 +15,7 @@ abstract class GuestRemoteDataSource {
     int limit,
     String? keyword,
   });
-  // Future<Either<Failure, Guest>> guestCheckIn(String eventId);
+  Future<Either<Failure, Guest>> guestCheckIn(String guestId);
 }
 
 class GuestRemoteDataSourceImpl extends GuestRemoteDataSource {
@@ -54,6 +54,35 @@ class GuestRemoteDataSourceImpl extends GuestRemoteDataSource {
       });
 
       if (response.statusCode == 200) return Right(result);
+
+      return Left(ConnectionFailure(result.message));
+    } on DioException catch (dioException) {
+      if (dioException.type == DioExceptionType.connectionTimeout) {
+        return const Left(ConnectionFailure('connection-timeout'));
+      }
+      return const Left(
+          ConnectionFailure('Terjadi masalah saat menghubungkan ke server'));
+    } catch (e) {
+      return const Left(ParsingFailure('Tidak dapat memparsing respon'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Guest>> guestCheckIn(String guestId) async {
+    try {
+      final checkInTime = DateTime.now().toLocal().toIso8601String();
+      final data = {'checkInTime': checkInTime};
+
+      String endpoint = '${ApiEndpoint.guestCheckIn}/$guestId';
+      final response = await _request.patch(
+        endpoint,
+        data: data,
+        requiresAuthToken: true,
+      );
+      final result = DefaultResponse<Guest>.fromJson(
+          response.data, (json) => Guest.fromJson(json as JSON));
+
+      if (response.statusCode == 201) return Right(result.data);
 
       return Left(ConnectionFailure(result.message));
     } on DioException catch (dioException) {

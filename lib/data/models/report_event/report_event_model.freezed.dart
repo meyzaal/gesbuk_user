@@ -24,7 +24,7 @@ mixin _$ReportEvent {
   String get id => throw _privateConstructorUsedError;
   int get guestPresent => throw _privateConstructorUsedError;
   int get guestAbsent => throw _privateConstructorUsedError;
-  int get percentage => throw _privateConstructorUsedError;
+  double get percentage => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $ReportEventCopyWith<$Res> {
       {@JsonKey(name: '_id') String id,
       int guestPresent,
       int guestAbsent,
-      int percentage,
+      double percentage,
       String eventId});
 }
 
@@ -82,7 +82,7 @@ class _$ReportEventCopyWithImpl<$Res, $Val extends ReportEvent>
       percentage: null == percentage
           ? _value.percentage
           : percentage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$_ReportEventCopyWith<$Res>
       {@JsonKey(name: '_id') String id,
       int guestPresent,
       int guestAbsent,
-      int percentage,
+      double percentage,
       String eventId});
 }
 
@@ -140,7 +140,7 @@ class __$$_ReportEventCopyWithImpl<$Res>
       percentage: null == percentage
           ? _value.percentage
           : percentage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -173,7 +173,7 @@ class _$_ReportEvent implements _ReportEvent {
   final int guestAbsent;
   @override
   @JsonKey()
-  final int percentage;
+  final double percentage;
   @override
   @JsonKey()
   final String eventId;
@@ -222,7 +222,7 @@ abstract class _ReportEvent implements ReportEvent {
       {@JsonKey(name: '_id') final String id,
       final int guestPresent,
       final int guestAbsent,
-      final int percentage,
+      final double percentage,
       final String eventId}) = _$_ReportEvent;
 
   factory _ReportEvent.fromJson(Map<String, dynamic> json) =
@@ -236,7 +236,7 @@ abstract class _ReportEvent implements ReportEvent {
   @override
   int get guestAbsent;
   @override
-  int get percentage;
+  double get percentage;
   @override
   String get eventId;
   @override

@@ -19,4 +19,8 @@ class GuestRepositoryImpl extends GuestRepository {
   }) async =>
       _guestRDS.getGuestByEventId(
           eventId: eventId, page: page, limit: limit, keyword: keyword);
+
+  @override
+  Future<Either<Failure, Guest>> guestCheckIn(String guestId) async =>
+      _guestRDS.guestCheckIn(guestId);
 }

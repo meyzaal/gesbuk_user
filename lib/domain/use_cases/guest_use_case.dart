@@ -17,4 +17,7 @@ class GuestUseCase {
   }) async =>
       _guestRepository.getGuestByEventId(
           eventId: eventId, page: page, limit: limit, keyword: keyword);
+
+  Future<Either<Failure, Guest>> guestCheckIn(String guestId) async =>
+      _guestRepository.guestCheckIn(guestId);
 }

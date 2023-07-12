@@ -14,7 +14,8 @@ class EventDetailReport extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final percentage = event.eventReport.percentage;
+    final percentage = event.reportEvent.percentage;
+    final roundedPercentage = double.parse(percentage.toStringAsFixed(1));
     final decimalPercentage = percentage / 100;
 
     return SliverToBoxAdapter(
@@ -34,10 +35,10 @@ class EventDetailReport extends StatelessWidget {
                 children: [
                   _buildGuestCountInfo(context,
                       label: 'Tamu hadir',
-                      count: event.eventReport.guestPresent),
+                      count: event.reportEvent.guestPresent),
                   _buildGuestCountInfo(context,
                       label: 'Tamu tidak hadir',
-                      count: event.eventReport.guestAbsent),
+                      count: event.reportEvent.guestAbsent),
                 ],
               ),
               Stack(
@@ -54,7 +55,7 @@ class EventDetailReport extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '$percentage%',
+                    '$roundedPercentage%',
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge

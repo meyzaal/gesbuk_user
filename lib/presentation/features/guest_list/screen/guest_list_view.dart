@@ -58,7 +58,9 @@ class GuestListView extends StatelessWidget {
                       eventId: eventId,
                       isRefresh: true,
                     )),
-                child: GuestListGuests(eventId: eventId),
+                child: GuestListGuests(
+                  eventId: eventId,
+                ),
               );
             }
 

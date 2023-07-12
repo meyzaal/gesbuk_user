@@ -19,9 +19,9 @@ _$_Event _$$_EventFromJson(Map<String, dynamic> json) => _$_Event(
       user: json['user'] == null
           ? const GesbukUser()
           : GesbukUser.fromJson(json['user'] as Map<String, dynamic>),
-      eventReport: json['eventReport'] == null
+      reportEvent: json['reportEvent'] == null
           ? const ReportEvent()
-          : ReportEvent.fromJson(json['eventReport'] as Map<String, dynamic>),
+          : ReportEvent.fromJson(json['reportEvent'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_EventToJson(_$_Event instance) => <String, dynamic>{
@@ -35,5 +35,5 @@ Map<String, dynamic> _$$_EventToJson(_$_Event instance) => <String, dynamic>{
       'eventType': instance.eventType,
       'guestCount': instance.guestCount,
       'user': instance.user,
-      'eventReport': instance.eventReport,
+      'reportEvent': instance.reportEvent,
     };

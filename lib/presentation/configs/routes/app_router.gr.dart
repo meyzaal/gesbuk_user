@@ -108,7 +108,7 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         routeData: routeData,
         child: _i9.ScannerPage(
           key: args.key,
-          onGuestCheckin: args.onGuestCheckin,
+          onGuestCheckIn: args.onGuestCheckIn,
         ),
       );
     },
@@ -339,13 +339,13 @@ class ProfileRoute extends _i11.PageRouteInfo<void> {
 class ScannerRoute extends _i11.PageRouteInfo<ScannerRouteArgs> {
   ScannerRoute({
     _i12.Key? key,
-    required void Function(bool) onGuestCheckin,
+    required void Function(bool) onGuestCheckIn,
     List<_i11.PageRouteInfo>? children,
   }) : super(
           ScannerRoute.name,
           args: ScannerRouteArgs(
             key: key,
-            onGuestCheckin: onGuestCheckin,
+            onGuestCheckIn: onGuestCheckIn,
           ),
           initialChildren: children,
         );
@@ -359,16 +359,16 @@ class ScannerRoute extends _i11.PageRouteInfo<ScannerRouteArgs> {
 class ScannerRouteArgs {
   const ScannerRouteArgs({
     this.key,
-    required this.onGuestCheckin,
+    required this.onGuestCheckIn,
   });
 
   final _i12.Key? key;
 
-  final void Function(bool) onGuestCheckin;
+  final void Function(bool) onGuestCheckIn;
 
   @override
   String toString() {
-    return 'ScannerRouteArgs{key: $key, onGuestCheckin: $onGuestCheckin}';
+    return 'ScannerRouteArgs{key: $key, onGuestCheckIn: $onGuestCheckIn}';
   }
 }
 

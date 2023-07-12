@@ -21,7 +21,7 @@ class Event with _$Event {
     @Default('-') String eventType,
     @Default(0) int guestCount,
     @Default(GesbukUser()) GesbukUser user,
-    @Default(ReportEvent()) ReportEvent eventReport,
+    @Default(ReportEvent()) ReportEvent reportEvent,
   }) = _Event;
 
   factory Event.fromJson(Map<String, Object?> json) => _$EventFromJson(json);

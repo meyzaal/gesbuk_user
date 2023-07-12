@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stream_transform/stream_transform.dart';
 
@@ -20,8 +21,12 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
   };
 }
 
+enum GuestCheckInStatus { initial, loading, success, error }
+
 class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
-  GuestListBloc() : super(const GuestListState.initial()) {
+  final ValueChanged<bool> onGuestCheckIn;
+
+  GuestListBloc(this.onGuestCheckIn) : super(const GuestListState.initial()) {
     on<GetGuestListEvent>(
       _onGetGuestListEvent,
       transformer: throttleDroppable(throttleDuration),
@@ -30,7 +35,10 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
       _onSearchGuestEvent,
       transformer: throttleDroppable(throttleDuration),
     );
+    on<GuestCheckInEvent>(_onGuestCheckInEvent);
   }
+
+  final _guestUseCase = serviceLocatorInstance<GuestUseCase>();
 
   DefaultResponse<List<Guest>> _response = const DefaultResponse(data: []);
   String eventId = '';
@@ -51,8 +59,8 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
       }
 
       final page = currentPage + 1;
-      final result = await serviceLocatorInstance<GuestUseCase>()
-          .getGuestByEventId(eventId: eventId, page: page);
+      final result =
+          await _guestUseCase.getGuestByEventId(eventId: eventId, page: page);
 
       result.fold(
           (failure) =>
@@ -67,8 +75,7 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
     } else {
       emit(const GuestListState.loading());
 
-      final result = await serviceLocatorInstance<GuestUseCase>()
-          .getGuestByEventId(eventId: eventId);
+      final result = await _guestUseCase.getGuestByEventId(eventId: eventId);
 
       result.fold(
           (failure) =>
@@ -91,11 +98,76 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
 
     emit(state.copyWith(searchMode: true, searchResults: []));
 
-    final result = await serviceLocatorInstance<GuestUseCase>()
-        .getGuestByEventId(eventId: eventId, limit: 0, keyword: keyword);
+    final result = await _guestUseCase.getGuestByEventId(
+        eventId: eventId, limit: 0, keyword: keyword);
 
     result.fold(
         (failure) => emit(GuestListState.error(errorMessage: failure.message)),
         (response) => emit(state.copyWith(searchResults: response.data)));
   }
+
+  Future<void> _onGuestCheckInEvent(
+    GuestCheckInEvent event,
+    Emitter<GuestListState> emit,
+  ) async {
+    emit(state.copyWith(checkInStatus: GuestCheckInStatus.loading));
+
+    final guestId = event.guestId;
+    final result = await _guestUseCase.guestCheckIn(guestId);
+
+    result.fold(
+        (failure) => emit(state.copyWith(
+            checkInStatus: GuestCheckInStatus.error,
+            errorMessage: failure.message)), (guest) {
+      List<Guest> guests = <Guest>[];
+      List<Guest> searchResult = <Guest>[];
+
+      for (Guest guest in state.guests) {
+        guests.add(guest);
+      }
+      for (Guest guest in state.searchResults) {
+        searchResult.add(guest);
+      }
+
+      guests = _updateGuestById(
+        id: guestId,
+        updatedGuest: guest,
+        listGuest: guests,
+      );
+      searchResult = _updateGuestById(
+        id: guestId,
+        updatedGuest: guest,
+        listGuest: searchResult,
+      );
+
+      onGuestCheckIn(true);
+      return emit(state.copyWith(
+          checkInStatus: GuestCheckInStatus.success,
+          guests: guests,
+          searchResults: searchResult));
+    });
+
+    emit(state.copyWith(
+        checkInStatus: GuestCheckInStatus.initial, errorMessage: ''));
+  }
+}
+
+List<Guest> _updateGuestById({
+  required String id,
+  required Guest updatedGuest,
+  required List<Guest> listGuest,
+}) {
+  int indexToUpdate = -1;
+  for (int i = 0; i < listGuest.length; i++) {
+    if (listGuest[i].id == id) {
+      indexToUpdate = i;
+      break;
+    }
+  }
+
+  if (indexToUpdate != -1) {
+    listGuest[indexToUpdate] = updatedGuest;
+  }
+
+  return listGuest;
 }
